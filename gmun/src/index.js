@@ -14,7 +14,7 @@ import Committee from "./components/Committee";
 import Contacts from "./components/Contacts";
 import Guide from "./components/Guide";
 import WorldMap from "./components/WorldMap";
-import Gallery from "./components/Gallery";
+import Gallery1 from "./components/Gallery1";
 import LogoutBtn from "./components/LogoutBtn";
 import FAQs from "./components/FAQs";
 import Discuss from "./components/Discuss";
@@ -111,8 +111,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/gallery",
-        element: <Gallery />,
+        path: "/gallery1",
+        element: <Gallery1 />,
       },
       {
         path: "/sec",
