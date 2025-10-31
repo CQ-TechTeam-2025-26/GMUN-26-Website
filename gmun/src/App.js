@@ -37,30 +37,30 @@ const App = () => {
     fetchData();
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <>
-        <div>
-          <Preloader />
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <ToastContainer position="top-left" />
-        <div>
-          {/* Navbar will always be displayed */}
-          <NavBar />
+  // if (loading) {
+  //   return (
+  //     <>
+  //       <div>
+  //         <Preloader />
+  //       </div>
+  //     </>
+  //   );
+  // } else
 
-          {/* Render the child route components using Outlet */}
-          <div>
-            <Outlet />
-          </div>
+  return (
+    <>
+      <ToastContainer position="top-left" />
+      <div>
+        {/* Navbar will always be displayed */}
+        <NavBar />
+
+        {/* Render the child route components using Outlet */}
+        <div>
+          <Outlet />
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 };
 
 export default App;

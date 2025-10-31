@@ -4,6 +4,7 @@ import Announcements from '../components/Announcements';
 import Footer from "../components/Footer";
 import Carousel from '../components/carousel';
 import Timeline from '../components/Timeline';
+import Reviews from '../components/reviews/Reviews';
 
 const Landing = () => {
     return (
@@ -213,6 +214,10 @@ const Landing = () => {
 
             <div className="timeline">
                 <Timeline/>
+            </div>
+
+            <div className="reviews">
+                <Reviews />
             </div>
 
             <footer>
