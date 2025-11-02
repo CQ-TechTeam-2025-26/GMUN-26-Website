@@ -80,7 +80,7 @@ section h1::after {
 /* === Review Card === */
 .review-card {
   shrink: 0;
-  background: rgba(255, 255, 255, 0.08);
+  background: #333333;
   border: 1px solid rgba(233, 167, 81, 0.2);
   border-radius: 16px;
   padding: 2rem 4rem;
@@ -94,7 +94,7 @@ section h1::after {
 .review-card-column {
   margin: 10px auto;
   shrink: 0;
-  background: rgba(255, 255, 255, 0.08);
+  background: #333333;
   border: 1px solid rgba(233, 167, 81, 0.2);
   border-radius: 16px;
   padding: 2rem 1rem;
@@ -111,7 +111,7 @@ section h1::after {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-187.7%);
+    transform: translateX(-176.53%);
   }
 }
 
@@ -121,7 +121,7 @@ section h1::after {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-213%);
+    transform: translateY(-207.15%);
   }
 }
 
@@ -139,11 +139,45 @@ section h1::after {
   margin-bottom: 1rem;
 }
 
+
+/* Progress Ring Carousel */
+.progress-ring-carousel {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+}
+
+.review-box {
+  background-color: #333333;
+  padding: 10px 20px;
+  border-radius: 16px;
+  margin: 0px 10px;
+  border: 1px solid yellow;
+  max-width: 70vw;
+}
+
+.avatar-wrapper {
+  margin: 40px 15px;
+  position: relative;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.progression-ring {
+  position: absolute;
+  top: -35px;
+  left: -15px;
+}
+
 .avatar {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 2px solid #e9a751;
   margin-bottom: 0.8rem;
   margin-right: 1rem;
   object-fit: cover;
@@ -157,6 +191,11 @@ section h1::after {
 }
 
 /* === Review Text === */
+.review-text-box {
+  text-align: left;
+  margin-top: 1rem;
+}
+
 .review-text p {
   text-align: left;
   font-size: 0.95rem;

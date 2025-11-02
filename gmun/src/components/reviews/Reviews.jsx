@@ -1,41 +1,42 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import "./styles.css";
 
 const ReviewsData = [
   {
     id: 0,
     name: "Participant A",
-    avatar: "./public/home-reviews/placeholder-avatar.png",
+    avatar: "./home-reviews/placeholder-avatar.png",
     review: "GMUN was an incredible experience that broadened my horizons.",
   },
   {
     id: 1,
     name: "Participant B",
-    avatar: "../../../public/home-reviews/placeholder-avatar.png",
+    avatar: "./home-reviews/placeholder-avatar.png",
     review: "The debates were engaging and the organization was top-notch.",
   },
   {
     id: 2,
     name: "Participant C",
-    avatar: "../../../public/home-reviews/placeholder-avatar.png",
+    avatar: "./home-reviews/placeholder-avatar.png",
     review: "I made lifelong friends and learned so much about diplomacy.",
   },
   {
     id: 3,
     name: "Participant D",
-    avatar: "../../../public/home-reviews/placeholder-avatar.png",
+    avatar: "./home-reviews/placeholder-avatar.png",
     review: "I made lifelong friends and learned so much about diplomacy.",
   },
   {
     id: 4,
     name: "Participant E",
-    avatar: "../../../public/home-reviews/placeholder-avatar.png",
+    avatar: "./home-reviews/placeholder-avatar.png",
     review: "I made lifelong friends and learned so much about diplomacy.",
   },
   {
     id: 5,
     name: "Participant F",
-    avatar: "../../../public/home-reviews/placeholder-avatar.png",
+    avatar: "./home-reviews/placeholder-avatar.png",
     review: "I made lifelong friends and learned so much about diplomacy.",
   },
 ];
@@ -43,9 +44,10 @@ const ReviewsData = [
 const Reviews = () => {
   //Progress ring carousel state
   const duration = 5000;
-  const r = 20;
-  const circumference = 2 * Math.PI * r;
+  const radius = 30;
+  const circumference = 2 * Math.PI * radius;
   const [topId, setTopId] = useState(1);
+  const [canEnter, setCanEnter] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -252,32 +254,65 @@ const Reviews = () => {
       </div>
 
       {/* progress ring carousel */}
-      <div>
+      <div className="progress-ring-carousel">
         {ReviewsData.map((review) => (
-          <div key={review.id}>
+          <AnimatePresence key={review.id}>
             {topId === review.id && (
-              <div className="avatar-wrapper">
-                <img src={review.avatar} alt={review.name} className="avatar" />
-                <svg
-                  className="progress-ring"
-                  viewBox="0 0 40 40"
-                  aria-hidden="true"
-                >
-                  <circle
-                    className="progress-ring__circle"
-                    cx="20"
-                    cy="20"
-                    r={r}
-                    strokeWidth="2"
-                    style={{
-                      animationDuration: `${duration}ms`,
-                      strokeDasharray: `${circumference}`,
-                    }}
+              <motion.div
+                className="review-box"
+                key={review.id}
+                initial={{ opacity: 0, x: "100%" }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: "-100%" }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="avatar-wrapper">
+                  <img
+                    src={review.avatar}
+                    alt={review.name}
+                    className="avatar"
                   />
-                </svg>
-              </div>
+                  <svg
+                    width={100}
+                    height={100}
+                    viewBox={`0 0 100 100`}
+                    className="progression-ring"
+                  >
+                    <g transform={`rotate(-90 ${50} ${50})`}>
+                      {/* background track */}
+                      <motion.circle
+                        cx={40}
+                        cy={40}
+                        r={radius}
+                        fill="transparent"
+                        stroke={"#e6e6e6"}
+                        strokeWidth={2}
+                        initial={{
+                          strokeDasharray: circumference,
+                          strokeDashoffset: circumference + 1,
+                        }}
+                        animate={{
+                          strokeDasharray: circumference,
+                          strokeDashoffset: 0,
+                        }}
+                        transition={{
+                          duration: duration / 1000 - 0.5,
+                          ease: "linear",
+                        }}
+                      />
+                    </g>
+                  </svg>
+                  <h3 className="name-center">{review.name}</h3>
+                </div>
+
+                {topId === review.id && (
+                  <div className="review-text-box">
+                    <p className="review-text-center">{review.review}</p>
+                  </div>
+                )}
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
         ))}
       </div>
     </section>
