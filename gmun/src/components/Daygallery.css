@@ -12,6 +12,68 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+/* When the gallery overlay is hovered, hide the native cursor */
+.gallery-overlay:hover, body.gallery-hover .gallery-overlay {
+  cursor: none;
+}
+
+/* Centered play/pause overlay that imitates a cursor near center of the screen */
+.play-pause-cursor {
+  pointer-events: auto; /* allow clicking */
+  position: fixed; /* fixed so it stays near center of viewport */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  background: rgba(43, 40, 71, 0.95);
+  color: #fff;
+  font-weight: 800;
+  font-size: 34px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.play-pause-cursor .icon {
+  display: inline-block;
+  transform: translateY(-2px);
+}
+
+.play-pause-cursor.paused {
+  background: rgba(255,255,255,0.95);
+  color: #2b2847;
+}
+
+/* Floating cursor that follows the real mouse pointer */
+.floating-cursor {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+  pointer-events: auto; /* allow clicks */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(43, 40, 71, 0.95);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  user-select: none;
+}
+
+.floating-cursor.play { background: rgba(255,255,255,0.95); color: #2b2847; }
+
+.floating-text { display: inline-block; transform: translateY(-1px); }
+
 .gallery-image {
   max-width: 80%;
   max-height: 80%;
