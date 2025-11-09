@@ -1,0 +1,57 @@
+
+.gallery-overlay-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#infinite-grid-menu-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+  position: relative;
+  z-index: 2; /* keep canvas above the blur overlay */
+}
+
+/* Blur overlay placed between the page background and the canvas. */
+.gallery2-bg-blur {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(255,255,255,0.02); /* slight tint so backdrop-filter takes effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1;
+  pointer-events: none; /* allow clicks through to canvas */
+}
+
+.gallery2-root { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+.gallery2-menu-container { position: relative; width: 100%; height: 100%; z-index: 2; }
+
+.face-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 20px;
+  z-index: 2000;
+}
+
+.face-description {
+  position: absolute;
+  top: 48px;
+  left: 20px;
+  color: rgba(255,255,255,0.85);
+  z-index: 2000;
+}
+
+.action-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2000;
+  cursor: pointer;
+}
+
+.inactive { opacity: 0.3; transform: translateY(6px); }
+.active { opacity: 1; transform: none; }
