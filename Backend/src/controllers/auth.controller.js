@@ -1,7 +1,12 @@
 import bcrypt from "bcrypt";
+import crypto from "crypto";
 import { generateTokenAndSetCookie } from "../utils/auth.utils.js";
 import { User } from "../models/User.model.js";
-import { sendVerificationEmail } from "../mailtrap/emails.js";
+import {
+  sendVerificationEmail,
+  sendResetPasswordEmail,
+  sendResetSuccessfulEmail,
+} from "../mailtrap/emails.js";
 
 export const signUpRoute = async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -122,4 +127,73 @@ export const loginRoute = async (req, res) => {
 export const logoutRoute = async (req, res) => {
   res.clearCookie("token");
   res.status(200).json({ success: true, message: "Logged out successfully" });
+};
+
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      res.status(400).json({ success: false, message: "No such user exists" });
+    }
+
+    const resetPasswordToken = crypto.randomBytes(20).toString("hex");
+    const resetPasswordTokenExpiresAt = Date.now() + 15 * 60 * 1000; // 15 minutes
+
+    user.resetPasswordToken = resetPasswordToken;
+    user.resetPasswordTokenExpiresAt = resetPasswordTokenExpiresAt;
+
+    await user.save();
+
+    await sendResetPasswordEmail(
+      email,
+      `${process.env.RESET_PASSWORD_URL}/reset-password/${resetPasswordToken}`
+    );
+    res
+      .status(200)
+      .json({ success: true, message: "Reset Email sent successfully" });
+  } catch (error) {
+    console.log("Error in forgot Passsword function: ", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  try {
+    const user = await User.findOne({
+      resetPasswordToken: token,
+    });
+
+    if (!user) {
+      res.status(400).json({ success: false, message: "reset token expired" });
+    }
+
+    bcrypt.hash(password, 10, async (err, hashedPassword) => {
+      if (err) {
+        console.log("error in hashing password in reset password function");
+        res
+          .status(500)
+          .json({ success: false, message: "error in hashing password" });
+      }
+
+      user.password = hashedPassword;
+      user.resetPasswordToken = undefined;
+      user.resetPasswordTokenExpiresAt = undefined;
+
+      await user.save();
+      await sendResetSuccessfulEmail(user.email);
+
+      res
+        .status(200)
+        .json({ success: true, message: "Password reset successfully" });
+    });
+  } catch (error) {
+    console.log("Error in reset password function: ", error);
+    res.status(500).json({ success: false, message: "internal server error" });
+  }
 };
