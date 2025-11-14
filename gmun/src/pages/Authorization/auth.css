@@ -1,0 +1,14 @@
+.auth-parent {
+  min-height: 100vh; /* min-h-screen */
+  background: linear-gradient(
+    to bottom right,
+    /* bg-linear-to-br */ #111827,
+    /* from-gray-900 */ #064e3b,
+    /* via-green-900 */ #065f46 /* to-emerald-900 */
+  );
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  justify-content: center; /* justify-center */
+  position: relative; /* relative */
+  overflow: hidden; /* overflow-hidden */
+}

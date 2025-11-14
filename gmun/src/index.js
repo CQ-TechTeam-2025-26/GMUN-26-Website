@@ -4,10 +4,7 @@ import "./styles/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./components/Login";
 import Register from "./components/Register";
-import AuthLayout from "./components/AuthLayout";
-import Profile from "./components/Profile";
 import EditDetails from "./components/EditDetails";
 import Landing from "./pages/Landing";
 import Committee from "./components/Committee";
@@ -15,23 +12,19 @@ import Contacts from "./components/Contacts";
 import Guide from "./components/Guide";
 import WorldMap from "./components/WorldMap";
 import Gallery from "./components/Gallery";
-import LogoutBtn from "./components/LogoutBtn";
 import FAQs from "./components/FAQs";
-import Discuss from "./components/Discuss";
 import AboutUs from "./pages/aboutUs";
 import Sec from "./components/sec";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import PostPage from "./components/PostPage.jsx";
 import Sponsors from "./components/Sponsors.jsx";
+import AuthLayout from "./pages/Authorization/AuthLayout.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/logout",
+    path: "/api/auth",
     element: (
-      <AuthLayout>
-        <LogoutBtn />
-      </AuthLayout>
+      <AuthLayout />
     ),
   },
   {
@@ -46,31 +39,12 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
+      
       {
         path: "/edit",
         element: (
           <AuthLayout>
             <EditDetails />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/profile",
-        element: (
-          <AuthLayout>
-            <Profile />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/posts/:postId",
-        element: (
-          <AuthLayout>
-            <PostPage />
           </AuthLayout>
         ),
       },
@@ -101,14 +75,6 @@ const router = createBrowserRouter([
       {
         path: "/Sponsors",
         element: <Sponsors/>,
-      },
-      {
-        path: "/Discuss",
-        element: (
-          <AuthLayout>
-            <Discuss />
-          </AuthLayout>
-        ),
       },
       {
         path: "/gallery",

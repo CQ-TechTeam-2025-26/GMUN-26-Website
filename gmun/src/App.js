@@ -11,8 +11,6 @@ import { logout } from "./store/authSlice.js";
 import Preloader from "./components/preloader.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Landing from "./pages/Landing.jsx";
-import Home from "./pages/Home.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
