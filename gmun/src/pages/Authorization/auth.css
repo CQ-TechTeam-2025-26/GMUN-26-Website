@@ -12,3 +12,108 @@
   position: relative; /* relative */
   overflow: hidden; /* overflow-hidden */
 }
+
+.signup-parent {
+  max-width: 28rem; /* max-w-md */
+  width: 100%; /* w-full */
+
+  background-color: rgba(31, 41, 55, 0.5); /* bg-gray-800 bg-opacity-50 */
+
+  backdrop-filter: blur(24px); /* backdrop-blur-xl */
+  -webkit-backdrop-filter: blur(24px);
+
+  border-radius: 1rem; /* rounded-2xl */
+
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-xl */
+
+  overflow: hidden;
+}
+
+.signup-box {
+  padding: 32px;
+}
+
+.create-account {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+
+  font-weight: 700; /* font-bold */
+  margin-bottom: 1.5rem; /* mb-6 */
+
+  text-align: center; /* text-center */
+
+  background: linear-gradient(
+    to right,
+    #4ade80,
+    #10b981
+  ); /* bg-gradient-to-r from-green-400 to-emerald-500 */
+  -webkit-background-clip: text; /* bg-clip-text */
+  background-clip: text;
+
+  color: transparent;
+}
+
+.submit-btn {
+  margin-top: 1.25rem; /* mt-5 */
+  width: 100%; /* w-full */
+
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+
+  background: linear-gradient(
+    to right,
+    #22c55e,
+    #059669
+  ); /* from-green-500 to-emerald-600 */
+  color: #ffffff; /* text-white */
+
+  font-weight: 700; /* font-bold */
+
+  border-radius: 0.5rem; /* rounded-lg */
+
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+
+  transition: all 0.2s;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to right, #16a34a, #047857);
+}
+
+.submit-btn:focus {
+  outline: none; /* focus:outline-none */
+  box-shadow: 0 0 0 2px #22c55e,
+    /* focus:ring-2 + focus:ring-green-500 */ 0 0 0 4px #111827;
+}
+
+.link-to-log-in {
+  padding-left: 2rem; /* px-8 */
+  padding-right: 2rem;
+
+  padding-top: 1rem; /* py-4 */
+  padding-bottom: 1rem;
+
+  background-color: rgba(17, 24, 39, 0.5); /* bg-gray-900 bg-opacity-50 */
+
+  display: flex; /* flex */
+  justify-content: center; /* justify-center */
+}
+
+.link-to-log-in p {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+
+  color: #9ca3af;
+}
+
+.login-page-link {
+  color: #4ade80;
+}
+
+.login-page-link:hover {
+  text-decoration: underline;
+}

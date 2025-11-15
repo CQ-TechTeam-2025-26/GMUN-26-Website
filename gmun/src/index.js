@@ -19,6 +19,8 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import Sponsors from "./components/Sponsors.jsx";
 import AuthLayout from "./pages/Authorization/AuthLayout.jsx";
+import SignUpPage from "./pages/Authorization/SignUpPage.jsx";
+import LoginPage from "./pages/Authorization/LoginPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,22 @@ const router = createBrowserRouter([
     element: (
       <AuthLayout />
     ),
+  },
+  {
+    path: "/api/auth/signup",
+    element: (
+      <AuthLayout>
+        <SignUpPage />
+      </AuthLayout>
+    )
+  },
+  {
+    path: "api/auth/login",
+    element: (
+      <AuthLayout>
+        <LoginPage />
+      </AuthLayout>
+    )
   },
   {
     path: "/",
@@ -38,15 +56,6 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
-      },
-      
-      {
-        path: "/edit",
-        element: (
-          <AuthLayout>
-            <EditDetails />
-          </AuthLayout>
-        ),
       },
       {
         path: "/AboutUs",

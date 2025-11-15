@@ -1,7 +1,7 @@
-import FloatingShapes from "../../components/Authorization/FloatingShapes";
+import FloatingShapes from "../../components/Authorization/FloatingShapes/FloatingShapes";
 import "./auth.css";
 
-const AuthLayout = () => {
+const AuthLayout = ({children}) => {
   return (
     <div className="auth-parent">
       <FloatingShapes
@@ -29,6 +29,7 @@ const AuthLayout = () => {
         left="70%"
         delay={5}
       />
+      {children}
     </div>
   );
 };
