@@ -22,6 +22,7 @@ import SignUpPage from "./pages/Authorization/SignUpPage.jsx";
 import LoginPage from "./pages/Authorization/LoginPage.jsx";
 import ForgotPassword from "./pages/Authorization/ForgotPassword.jsx";
 import VerifyEmail from "./pages/Authorization/VerifyEmail.jsx";
+import {Toaster} from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -120,6 +121,7 @@ root.render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
+    <Toaster />
   </React.StrictMode>
 );
 

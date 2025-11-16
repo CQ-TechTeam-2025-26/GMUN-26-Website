@@ -261,23 +261,29 @@
 }
 
 .verify-form-input {
-  width: 3rem;                 /* w-12 */
-  height: 3rem;                /* h-12 */
+  width: 3rem; /* w-12 */
+  height: 3rem; /* h-12 */
 
-  text-align: center;          /* text-center */
-  font-size: 1.5rem;           /* text-2xl */
-  font-weight: 700;            /* font-bold */
+  text-align: center; /* text-center */
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
 
-  background-color: #374151;   /* bg-gray-700 */
-  color: #ffffff;              /* text-white */
+  background-color: #374151; /* bg-gray-700 */
+  color: #ffffff; /* text-white */
 
-  border-width: 2px;           /* border-2 */
-  border-color: #4b5563;       /* border-gray-600 */
+  border-width: 2px; /* border-2 */
+  border-color: #4b5563; /* border-gray-600 */
 
-  border-radius: 0.5rem;       /* rounded-lg */
+  border-radius: 0.5rem; /* rounded-lg */
   outline: none;
 }
 
 .verify-form-input:focus {
   border-color: #22c55e;
+}
+
+.error {
+  color: #ef4444 !important; /* text-red-500 */
+  font-weight: 600; /* font-semibold */
+  margin-top: 0.5rem;
 }
