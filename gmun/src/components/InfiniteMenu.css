@@ -142,9 +142,50 @@
   .drag-instruction .drag-icon { width: 30px; height: 30px; }
 }
 
+/* Responsive visibility and sizing for titles/descriptions */
 @media (max-width: 1500px) {
-  .face-title,
-  .face-description {
-    display: none;
+  .face-title { font-size: 2rem; top: 3%; }
+  .face-description { font-size: 1.1rem; top: 8%; }
+}
+
+/* On narrow and half-screen layouts, keep the title above the sphere (like the desktop/original view)
+   but slightly reduce sizes so it fits mobile screens. */
+@media (max-width: 900px) {
+  .face-title {
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.6rem; /* slightly smaller but same placement */
+    width: calc(100% - 40px);
+    text-align: center;
+    padding: 0 8px;
+    pointer-events: none;
+    z-index: 3000;
   }
+
+  .face-description {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    width: calc(100% - 60px);
+    text-align: center;
+    padding: 2px 6px;
+    z-index: 3000;
+  }
+
+  /* keep action button at bottom-right like original layout */
+  .action-button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    transform: none;
+    z-index: 3000;
+  }
+}
+
+@media (max-width: 420px) {
+  .face-title { bottom: 100px; font-size: 1.1rem; }
+  .face-description { bottom: 78px; font-size: 0.9rem; }
+  .action-button { bottom: 12px; }
 }
