@@ -32,6 +32,21 @@ export const useAuthStore = create((set) => ({
     }
   },
 
+  login: async (email, password) => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await axios.post(`${API_URL}/login`, { email, password });
+      set({
+        user: response.data.user,
+        isLoading: false,
+        isAuthenticated: true,
+      });
+    } catch (error) {
+      set({ error: error, isAuthenticated: false, isLoading: false });
+      throw error;
+    }
+  },
+
   verifyEmail: async (code) => {
     set({ isLoading: true, error: null });
     try {
@@ -48,6 +63,23 @@ export const useAuthStore = create((set) => ({
         isLoading: false,
       });
       throw error;
+    }
+  },
+
+  checkAuth: async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    set({ isCheckingAuth: true, error: null });
+    try {
+      const response = await axios.get(`${API_URL}/check-auth`);
+      console.log(response);
+      set({
+        user: response.data.user,
+        isAuthenticated: true,
+        isCheckingAuth: false,
+      });
+    } catch (error) {
+      set({ error: null, isCheckingAuth: false, isAuthenticated: false });
+      console.log("error in checkAuth function in authStore.js ", error);
     }
   },
 }));

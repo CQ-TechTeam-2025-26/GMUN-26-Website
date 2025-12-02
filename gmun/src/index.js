@@ -22,14 +22,12 @@ import SignUpPage from "./pages/Authorization/SignUpPage.jsx";
 import LoginPage from "./pages/Authorization/LoginPage.jsx";
 import ForgotPassword from "./pages/Authorization/ForgotPassword.jsx";
 import VerifyEmail from "./pages/Authorization/VerifyEmail.jsx";
-import {Toaster} from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
     path: "/api/auth",
-    element: (
-      <AuthLayout />
-    ),
+    element: <AuthLayout />,
   },
   {
     path: "/api/auth/signup",
@@ -37,7 +35,7 @@ const router = createBrowserRouter([
       <AuthLayout>
         <SignUpPage />
       </AuthLayout>
-    )
+    ),
   },
   {
     path: "/api/auth/login",
@@ -45,7 +43,7 @@ const router = createBrowserRouter([
       <AuthLayout>
         <LoginPage />
       </AuthLayout>
-    )
+    ),
   },
   {
     path: "/api/auth/forgot-password",
@@ -53,7 +51,7 @@ const router = createBrowserRouter([
       <AuthLayout>
         <ForgotPassword />
       </AuthLayout>
-    )
+    ),
   },
   {
     path: "/api/auth/verify-email",
@@ -61,7 +59,7 @@ const router = createBrowserRouter([
       <AuthLayout>
         <VerifyEmail />
       </AuthLayout>
-    )
+    ),
   },
   {
     path: "/",
@@ -101,7 +99,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Sponsors",
-        element: <Sponsors/>,
+        element: <Sponsors />,
       },
       {
         path: "/gallery",
