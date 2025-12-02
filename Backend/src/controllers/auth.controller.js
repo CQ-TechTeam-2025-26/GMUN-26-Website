@@ -205,7 +205,7 @@ export const checkAuth = async (req, res) => {
       return res.status(400).json({ success: false, message: "No user found" });
     }
 
-    res.status(200).json({ success: true, user });
+    return res.status(200).json({ success: true, user });
   } catch (error) {
     console.log("Error in chechAuth controller", error);
     return res.status(500).json({ success: false, message: "Server error" });

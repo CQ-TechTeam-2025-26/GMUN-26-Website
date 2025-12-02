@@ -18,6 +18,8 @@
  *   "start": "nodemon src/app.js"
  *  existing code...
  *  }
+ * 
+ * After deploying the website, go to gmun/src/store/authStore.js file and change the API_URL parameter value to the appropriate value.
  */
 
 import express from "express";
