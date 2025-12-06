@@ -1,61 +1,68 @@
 import React, { useEffect, useRef, useState } from "react";
 
 /* ------------------ OurJourney (full-screen section) ------------------ */
-function OurJourney() {
-  return (
-    <section
-      style={{
-        width: "100vw",
-        minHeight: "100vh",
-        background: "#6f6968",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "40px 20px",
-        textAlign: "center",
-        color: "#f5ebe7",
-        marginLeft: "calc(50% - 50vw)",
-        boxSizing: "border-box",
-        zIndex: 0
-      }}
-    >
-      <h2
-        style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: "64px",
-          fontWeight: "600",
-          letterSpacing: "2px",
-          marginBottom: "20px",
-        }}
-      >
-        OUR JOURNEY
-      </h2>
+// function OurJourney() {
+//   return (
+//     <section
+//       style={{
+//         width: "100vw",
+//         minHeight: "100vh",
+//         background: "#6f6968",
+//         display: "flex",
+//         flexDirection: "column",
+//         justifyContent: "center",
+//         alignItems: "center",
+//         padding: "40px 20px",
+//         textAlign: "center",
+//         color: "#f5ebe7",
+//         marginLeft: "calc(50% - 50vw)",
+//         boxSizing: "border-box",
+//         zIndex: 0
+//       }}
+//     >
+//       <h2
+//         style={{
+//           fontFamily: "'Playfair Display', serif",
+//           fontSize: "64px",
+//           fontWeight: "600",
+//           letterSpacing: "2px",
+//           marginBottom: "20px",
+//         }}
+//       >
+//         OUR JOURNEY
+//       </h2>
 
-      <p
-        style={{
-          maxWidth: "900px",
-          fontSize: "18px",
-          lineHeight: "1.7",
-          color: "#e9e0dc",
-        }}
-      >
-        The journey of GMUN has been one of continuous growth and evolution.
-        What started as a small initiative has blossomed into a premier event,
-        drawing participants from across the nation. Each year, we've introduced
-        new committees, tackled more complex global issues, and enhanced the
-        delegate experience. Our expansion reflects the dedication of our team
-        and the enthusiasm of our participants. We are proud of our history and
-        excited for the future we are building together.
-      </p>
-    </section>
-  );
-}
+//       <p
+//         style={{
+//           maxWidth: "900px",
+//           fontSize: "18px",
+//           lineHeight: "1.7",
+//           color: "#e9e0dc",
+//         }}
+//       >
+//         The journey of GMUN has been one of continuous growth and evolution.
+//         What started as a small initiative has blossomed into a premier event,
+//         drawing participants from across the nation. Each year, we've introduced
+//         new committees, tackled more complex global issues, and enhanced the
+//         delegate experience. Our expansion reflects the dedication of our team
+//         and the enthusiasm of our participants. We are proud of our history and
+//         excited for the future we are building together.
+//       </p>
+//     </section>
+//   );
+// }
 
 /* ------------------ OurStory component with animate -> release flow ------------------ */
 export default function OurStory() {
   const imgSrc = "/group.jpg"; // update to your image path or import
   const secretaries = [
+    "Arya Dubey",
+    "Atharva Deshmukh",
+    "Divyansh Jain",
+    "Pritvik Premkumar Shanmuga",
+    "Sourav Upadhayay",
+    "Sritoma Nandan",
+    "Tejal Saurabhi",
  "Anshuman Singh",
 "Anusha Baheti",
 "Anushka Jain",
@@ -92,7 +99,7 @@ export default function OurStory() {
 
 
   return (
-    <div style={{ background: "#f6e7e5", color: "#6b6666" }}>
+    <div style={{ background: "#6f6968", color: "#6b6666",height: "80%" }}>
       <style>{`
        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
 
@@ -105,7 +112,7 @@ export default function OurStory() {
 .image-wrap {
   width: 700px;
   height: 260px;
-  margin: 28px auto 34px;
+  margin: 28px auto 14px;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 14px 35px rgba(0,0,0,0.12);
@@ -165,9 +172,9 @@ export default function OurStory() {
 
       `}</style>
 
-      <main className="container">
+      <div className="container">
         <div className="since">SINCE 2006</div>
-        <h1 className="title">Our Story</h1>
+        <h1 className="title">Our Legacy</h1>
         <div className="subtitle">SHAPING CONFIDENT LEADERS</div>
 
         
@@ -177,15 +184,15 @@ export default function OurStory() {
   </div>
        
         <p className="lead">
-          From our beginnings as a handful of student trainers, Communiqué has grown into IIT Kharagpur's official soft-skills and personality development society. For over a decade we've run intensive workshops, peer mentoring and signature programs that prepare students for internships, campus placements and leadership beyond campus. Our flagship events — the Placement Bootcamp and Internship Training Week — combine industry panels, live mock interviews, resume clinics and role-specific sessions to help students build confidence, communication and practical career skills.
+          The journey of GMUN and the soft-skills society Communiqué at IIT Kharagpur share a common thread of continuous growth. GMUN has evolved from a small initiative into a premier national event, expanding yearly by tackling complex global issues and enhancing the delegate experience. Over the past decade, Communiqué has become the official personality development body, running intensive programs like the Placement Bootcamp and Internship Training Week, which utilize industry panels and mock interviews to build student confidence, communication, and practical career skills.
         </p>
 
         {/* the OurJourney section follows and will be reachable after release */}
-        <OurJourney />
+        {/* <OurJourney /> */}
         <OurEvents />
         <OurTeam team={secretaries} />
         <QuoteBlock />
-      </main>
+      </div>
     </div>
   );
 }
@@ -438,8 +445,8 @@ function OurTeam({ team = [] }) {
   return (
     <section
       style={{
-        width: "100vw",
-        marginLeft: "calc(50% - 50vw)",
+        width: "80vw",
+        marginLeft: "calc(65% - 50vw)",
         minHeight: "100vh",
         background: "#6f6968", // matches your OUR JOURNEY bg
         display: "flex",
@@ -500,15 +507,10 @@ function OurTeam({ team = [] }) {
       <div className="team-grid">
         {list.map((name, i) => (
           <div key={i} className="team-card">
-            {i + 1}. {name}
+            {name}
           </div>
         ))}
       </div>
     </section>
   );
 }
-
-
-  
-
-
