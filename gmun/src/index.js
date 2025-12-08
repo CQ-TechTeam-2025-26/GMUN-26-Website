@@ -117,6 +117,11 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
+      
+      {
+        path: "/gallery",
+        element: <Gallery2Page />,
+      },
       {
         path: "/gallery2",
         element: <Gallery2Page />,
