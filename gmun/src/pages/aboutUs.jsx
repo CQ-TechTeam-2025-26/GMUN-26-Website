@@ -47,23 +47,29 @@ import React, { useEffect, useRef, useState } from "react";
 //         delegate experience. Our expansion reflects the dedication of our team
 //         and the enthusiasm of our participants. We are proud of our history and
 //         excited for the future we are building together.
+//         GMUN (Global Model United Nations), the flagship diplomatic simulation conference of IIT Kharagpur, is an initiative driven by Communiqué — the official Soft Skills and Personality Development Society of IIT Kharagpur. Together, we are united by a shared mission: to empower students with confidence, leadership, diplomacy, and real-world professional skills.
+//         What began as a modest initiative has now grown into one of India’s premier national MUN conferences, drawing hundreds of delegates from across the country each year. GMUN continues to evolve by addressing complex global issues, delivering high-quality committee experiences, and fostering meaningful debate, collaboration, and leadership.
+         
+
+
 //       </p>
 //     </section>
 //   );
 // }
 
 /* ------------------ OurStory component with animate -> release flow ------------------ */
-export default function OurStory() {
-  const imgSrc = "/group.jpg"; // update to your image path or import
-  const secretaries = [
-    "Arya Dubey",
-    "Atharva Deshmukh",
-    "Divyansh Jain",
-    "Pritvik Premkumar Shanmuga",
-    "Sourav Upadhayay",
-    "Sritoma Nandan",
-    "Tejal Saurabhi",
- "Anshuman Singh",
+const governors = [
+  "Arya Dubey",
+  "Atharva Deshmukh",
+  "Divyansh Jain",
+  "Pritvik Premkumar Shanmuga",
+  "Sourav Upadhayay",
+  "Sritoma Nandan",
+  "Tejal Saurabhi",
+];
+const secretaries = [
+    
+"Anshuman Singh",
 "Anusha Baheti",
 "Anushka Jain",
 "Avani Dandawate",
@@ -97,13 +103,43 @@ export default function OurStory() {
   // add as many as you want
 ];
 
+export default function OurStory() {
+  const imgSrc = "/group.jpg"; // update to your image path or import
+  
+
 
   return (
-    <div style={{ background: "#6f6968", color: "#6b6666",height: "80%" }}>
+    <div
+  style={{
+    color: "#6b6666",
+    minHeight: "100vh",      // ✅ allows unlimited vertical growth
+    background: "#f6e7e5",  // ✅ keeps page consistent
+    paddingBottom: "120px"  // ✅ prevents bottom clipping
+  }}
+>
+
+
       <style>{`
        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
 
-.container { max-width: 980px; margin: 0 auto; padding: 48px 24px 0; text-align: center; }
+.container {
+  max-width: 980px;
+  margin: 32px auto 80px;
+  padding: 48px 40px 96px;  /* ✅ extra bottom padding */
+  text-align: center;
+  background: #ffffff;
+  border-radius: 32px;
+
+  /* ✅ WHITE GLOW */
+  box-shadow:
+    0 0 12px rgba(255,255,255,0.6),
+    0 0 30px rgba(255,255,255,0.4),
+    0 0 70px rgba(255,255,255,0.25);
+
+  overflow: visible;       /* ✅ allow content to grow */
+  height: auto;            /* ✅ CRITICAL FIX */
+}
+
 .since { letter-spacing: 6px; font-size: 25px; margin-top: 6px; }
 .title { font-family: 'Playfair Display', serif; font-weight: 700; color: #13433f; font-size: 130px; line-height: 0.82; margin: 18px 0 6px; }
 .subtitle { font-size: px; letter-spacing: 4px; margin-top: 30px; margin-bottom: 40px; }
@@ -128,7 +164,17 @@ export default function OurStory() {
 }
 
 /* keep lead paragraph styling */
-.lead { max-width: 720px; margin: 28px auto 46px; font-size: 15px; line-height: 1.6; color: #4b4545; text-align: center; }
+.lead {
+  width: 100%;
+  max-width: 100%;
+  margin: 32px auto 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4b4545;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
 /* responsive adjustments */
 @media (max-width: 760px){
@@ -138,7 +184,7 @@ export default function OurStory() {
 
 
         .quote-section {
-  background: #f6e7e5; /* page background */
+  background: transparent /* page background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -184,13 +230,13 @@ export default function OurStory() {
   </div>
        
         <p className="lead">
-          The journey of GMUN and the soft-skills society Communiqué at IIT Kharagpur share a common thread of continuous growth. GMUN has evolved from a small initiative into a premier national event, expanding yearly by tackling complex global issues and enhancing the delegate experience. Over the past decade, Communiqué has become the official personality development body, running intensive programs like the Placement Bootcamp and Internship Training Week, which utilize industry panels and mock interviews to build student confidence, communication, and practical career skills.
+          The journey of GMUN and the soft-skills society Communiqué at IIT Kharagpur share a common thread of continuous growth. GMUN has evolved from a small initiative into a premier national event, expanding yearly by tackling complex global issues and enhancing the delegate experience. Over the past decade, Communiqué has become the official personality development body, running intensive programs like the Placement Bootcamp and Internship Training Week, which utilize industry panels and mock interviews to build student confidence, communication, and practical career skills. GMUN (Global Model United Nations), the flagship diplomatic simulation conference of IIT Kharagpur, is an initiative driven by Communiqué — the official Soft Skills and Personality Development Society of IIT Kharagpur. Together, we are united by a shared mission: to empower students with confidence, leadership, diplomacy, and real-world professional skills.What began as a modest initiative has now grown into one of India’s premier national MUN conferences, drawing hundreds of delegates from across the country each year. GMUN continues to evolve by addressing complex global issues, delivering high-quality committee experiences, and fostering meaningful debate, collaboration, and leadership.
         </p>
 
         {/* the OurJourney section follows and will be reachable after release */}
         {/* <OurJourney /> */}
         <OurEvents />
-        <OurTeam team={secretaries} />
+        <OurTeam />
         <QuoteBlock />
       </div>
     </div>
@@ -304,22 +350,31 @@ function Carousel({ id, title, description, slides }) {
         }
 
         .oe-section {
-          background: var(--bg);
-          padding: 88px 20px;
+          background: transparent;
+          padding: 88px 0;
           box-sizing: border-box;
           color: var(--muted);
+          display: flex; 
+          justify-content: center;  
         }
 
-        .oe-wrap { max-width: 1200px; margin: 0 auto; }
+        .oe-wrap { max-width: 1100px; margin: 0 auto;  padding: 0 20px;  }
 
-        .oe-header { text-align: center; margin-bottom: 36px; }
+        .oe-header {  text-align: center;
+  margin-bottom: 36px;
+
+  /* 🔽 new lines */
+  max-width: 900px;        /* same as carousel max-width */
+  margin-left: auto;
+  margin-right: auto;      /* centers the whole header block */
+ }
         .oe-header h2 {
           font-family: 'Playfair Display', serif;
           font-size: 56px;
           margin: 0 0 8px;
           color: var(--brand);
         }
-        .oe-header p { color: var(--muted); max-width: 900px; margin: 0 auto; }
+        .oe-header p { color: var(--muted); max-width: 100% ; margin: 0 auto;  }
 
         /* vertical stack: ITW first, Bootcamp below */
         .oe-grid {
@@ -340,7 +395,8 @@ function Carousel({ id, title, description, slides }) {
           color: var(--brand);
         }
 
-        .oe-carousel { display: flex; align-items: center; gap: 12px; position: relative; }
+        .oe-carousel { display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; margin: 0 auto;  width: 100%;
+  max-width: 900px;    }
 
         .oe-arrow {
           width: 52px; height: 52px; border-radius: 4px; background: transparent;
@@ -348,7 +404,7 @@ function Carousel({ id, title, description, slides }) {
           display: flex; align-items: center; justify-content: center; cursor: pointer;
         }
 
-        .oe-viewport { flex: 1 1 auto; overflow: hidden; }
+        .oe-viewport { flex: 0 0 auto; overflow: hidden; justify-content: center;}
 
         .oe-slide { display: none; padding: 8px; box-sizing: border-box; }
         .oe-slide.active { display: block; }
@@ -429,88 +485,157 @@ function QuoteBlock() {
   );
 }
   /* ------------------ OUR TEAM SECTION ------------------ */
-function OurTeam({ team = [] }) {
-  // Sample fallback if nothing is passed
-  const sampleNames = [
-    "Aarav Sharma",
-    "Meera Singh",
-    "Rohit Das",
-    "Nisha Rao",
-    "Sahil Gupta",
-    "Priya Nair",
-  ];
-
-  const list = team.length ? team : sampleNames;
-
+ function OurTeam() {
   return (
-    <section
-      style={{
-        width: "80vw",
-        marginLeft: "calc(65% - 50vw)",
-        minHeight: "100vh",
-        background: "#6f6968", // matches your OUR JOURNEY bg
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "60px 20px",
-        boxSizing: "border-box",
-        color: "#f5ebe7",
-      }}
-    >
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap');
-
-        .team-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 64px;
-          font-weight: 600;
-          letter-spacing: 2px;
-          margin-bottom: 40px;
+    <>
+      <style>
+        {`
+        .team-section {
+          padding: 4rem 6vw 5rem;
+          background: #5a5252;
+          color: #f7f0f0;
+          font-family: "Poppins", system-ui, sans-serif;
           text-align: center;
-          color: #f5ebe7;
         }
 
-        .team-grid {
-          width: 100%;
-          max-width: 1100px;
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 28px;
-          padding: 0 20px;
-          box-sizing: border-box;
+        .team-heading {
+          font-size: clamp(2.6rem, 4vw, 3.4rem);
+          letter-spacing: 0.22em;
+          margin-bottom: 3rem;
+          text-transform: uppercase;
         }
 
-        .team-card {
-          background: rgba(255,255,255,0.05);
-          border-radius: 12px;
-          padding: 22px;
-          text-align: center;
-          font-family: 'Poppins', sans-serif;
-          color: #f5ebe7;
-          font-size: 18px;
-          box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-          border: 1px solid rgba(255,255,255,0.08);
+        .team-block {
+          max-width: 1000px;
+          margin: 0 auto 3.2rem;
+        }
+
+        .team-label {
+          display: inline-block;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.4rem;
+          border-bottom: 1px solid rgba(246, 225, 200, 0.6);
+          opacity: 0.9;
+        }
+
+        .governors-label {
+          border-color: rgba(255, 215, 170, 0.9);
+        }
+
+        .governor-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.75rem 2rem;
+          margin: 0 auto;
+        }
+
+        .governor-name {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          font-size: 1rem;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          background: linear-gradient(90deg, #ffe3b8, #f8d6ff);
+          -webkit-background-clip: text;
+          color: transparent;
+          cursor: default;
+        }
+
+        .governor-name .dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 999px;
+          background: radial-gradient(circle, #ffe3b8, #f4b96e);
+        }
+
+        .secretary-list {
+          list-style: none;
+          margin: 0 auto;
+          padding: 0;
+          max-width: 900px;
+          column-count: 3;
+          column-gap: 3rem;
+          text-align: left;
         }
 
         @media (max-width: 900px) {
-          .team-grid { grid-template-columns: repeat(2, 1fr); }
+          .secretary-list {
+            column-count: 2;
+          }
         }
-        @media (max-width: 520px) {
-          .team-grid { grid-template-columns: 1fr; }
-          .team-title { font-size: 40px; }
+
+        @media (max-width: 600px) {
+          .secretary-list {
+            column-count: 1;
+          }
         }
-      `}</style>
 
-      <h2 className="team-title">OUR TEAM</h2>
+        .secretary-name {
+          padding: 0.2rem 0 0.2rem 1.1rem;
+          font-size: 0.98rem;
+          letter-spacing: 0.02em;
+          position: relative;
+          opacity: 0.9;
+          break-inside: avoid;
+        }
 
-      <div className="team-grid">
-        {list.map((name, i) => (
-          <div key={i} className="team-card">
-            {name}
+        .secretary-name::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0.7rem;
+          width: 6px;
+          height: 6px;
+          border-radius: 999px;
+          background: rgba(245, 215, 195, 0.9);
+        }
+
+        .governor-name,
+        .secretary-name {
+          transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .governor-name:hover,
+        .secretary-name:hover {
+          transform: translateX(3px);
+          opacity: 1;
+        }
+        `}
+      </style>
+
+      <section className="team-section">
+        <h2 className="team-heading">OUR TEAM</h2>
+
+        {/* Governors */}
+        <div className="team-block">
+          <div className="team-label governors-label">Governors</div>
+          <div className="governor-row">
+            {governors.map((name) => (
+              <span key={name} className="governor-name">
+                <span className="dot" />
+                {name}
+              </span>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+
+        {/* Secretaries */}
+        <div className="team-block">
+          <div className="team-label">Secretaries</div>
+          <ul className="secretary-list">
+            {secretaries.map((name) => (
+              <li key={name} className="secretary-name">
+                {name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }
