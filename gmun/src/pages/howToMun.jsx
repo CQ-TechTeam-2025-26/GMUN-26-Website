@@ -1,6 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
-import BackgroundGuideBox from "../components/DelegateHandbookBox"; //using this for brochure
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import BackgroundGuideBox from "../components/DelegateHandbookBox";
+import "./HowToMUN.css";
 
 const data = [
   {
@@ -73,61 +74,141 @@ knowledge, teamwork, leadership, and strategic thinking throughout all sessions.
 ];
 
 export default function HowToMUN() {
-  return (
-    <div
-      className="min-h-screen w-full px-4 flex flex-col items-center"
-      style={{
-        backgroundImage: "url('/assets/gmun-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        paddingTop: "48px"
-      }}
-    >
-      <motion.h1 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="font-bold text-center drop-shadow-lg"
-        style={{
-          color: "#FFD700",
-          fontSize: "4rem",
-          marginBottom: "40px"
-        }}
-      >
-        How to MUN
-      </motion.h1>
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRefs = useRef([]);
 
-      <div className="w-full flex flex-col items-center">
-        {data.map((item, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="w-full max-w-4xl rounded-lg border"
-            style={{
-              background: "rgba(15, 7, 35, 0.55)",
-              border: "2px solid #B89B5E",
-              boxShadow: "0 0 20px rgba(255, 215, 0, 0.15)",
-              borderRadius: "15px",
-              padding: "24px 24px 24px 24px",
-              marginBottom: idx !== data.length - 1 ? "40px" : "0px"
-            }}
-          >
-            <h2 className="text-3xl font-bold mb-4" style={{ color: "#D8B877", marginBottom: "15px" }}>
-              {item.q}
-            </h2>
-            <p 
-              className="text-lg leading-7 whitespace-pre-line text-white"
-              style={{ color: "#ffffff", marginBottom: "15px" }} 
+  const handleCardClick = (index) => {
+    setActiveIndex((prev) => (prev === index ? -1 : index));
+  };
+
+  const handlePillClick = (index) => {
+    setActiveIndex(index);
+    const el = sectionRefs.current[index];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  return (
+    <div className="howto-wrapper">
+      {/* no extra dark overlay, background comes from the page itself */}
+      <div className="howto-container">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="howto-header"
+        >
+          <p className="howto-badge">GMUN DELEGATE ESSENTIALS</p>
+          <h1 className="howto-title">How to MUN</h1>
+          <p className="howto-subtitle">
+            A quick, interactive guide to help you understand the flow, research, and
+            responsibilities of a delegate.
+          </p>
+        </motion.div>
+
+        {/* Top pill navigation
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="howto-pills"
+        >
+          {data.map((item, index) => (
+            <button
+              key={index}
+              onClick={() => handlePillClick(index)}
+              className={
+                "howto-pill" + (activeIndex === index ? " howto-pill-active" : "")
+              }
             >
-              {item.a}
-            </p>
-          </motion.div>
-        ))}
-        {/* === Background Guide Box === */}
-        <div style={{ marginBottom: "60px" }}>
-          <BackgroundGuideBox link="https://www.canva.com/design/DAGbOepToVo/54kVE01-QsrXxBhgB0pppg/edit" />
+              {item.q}
+            </button>
+          ))}
+        </motion.div> */}
+
+        {/* Main layout */}
+        <div className="howto-main">
+          {/* Left: accordion cards */}
+          <div className="howto-cards">
+            {data.map((item, idx) => {
+              const isActive = idx === activeIndex;
+              return (
+                <motion.div
+                  key={idx}
+                  ref={(el) => (sectionRefs.current[idx] = el)}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: idx * 0.07 }}
+                  className={
+                    "howto-card" + (isActive ? " howto-card-active" : "")
+                  }
+                  onClick={() => handleCardClick(idx)}
+                >
+                  <div className="howto-card-inner">
+                    <div
+                      className={
+                        "howto-card-number" +
+                        (isActive ? " howto-card-number-active" : "")
+                      }
+                    >
+                      {idx + 1}
+                    </div>
+
+                    <div className="howto-card-content">
+                      <div className="howto-card-header">
+                        <h2 className="howto-card-title">{item.q}</h2>
+                        <motion.span
+                          initial={false}
+                          animate={{ rotate: isActive ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="howto-card-toggle"
+                        >
+                          ▾
+                        </motion.span>
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.div
+                            key="content"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="howto-card-body"
+                          >
+                            <p className="howto-card-text">{item.a}</p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Right: ONLY Background Guide & Handbook box */}
+          <motion.aside
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45, delay: 0.2 }}
+            className="howto-sidebar"
+          >
+            <div className="howto-box howto-brochure-box">
+              <h4 className="howto-box-title">Background Guide &amp; Handbook</h4>
+              <p className="howto-box-text">
+                For deeper procedures, format rules, and advanced tips, refer to the
+                official GMUN background guide.
+              </p>
+              <div className="howto-brochure">
+                <BackgroundGuideBox link="https://www.canva.com/design/DAGbOepToVo/54kVE01-QsrXxBhgB0pppg/edit" />
+              </div>
+            </div>
+          </motion.aside>
         </div>
       </div>
     </div>

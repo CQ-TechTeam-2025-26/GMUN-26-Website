@@ -1,5 +1,5 @@
 import React from "react";
-import "./BackgroundGuideBox.css";
+import "./DelegateHandbookBox.css";
 import { collapseToast } from "react-toastify";
 import { color } from "framer-motion";
 

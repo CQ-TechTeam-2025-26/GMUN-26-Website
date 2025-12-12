@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/index.css";
 import App from "./App";
-import { BookOpen, FileText, HelpCircle, Globe2, Users } from "lucide-react";
+// import { BookOpen, FileText, HelpCircle, Globe2, Users } from "lucide-react";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./components/Login";
