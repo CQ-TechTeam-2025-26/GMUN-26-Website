@@ -6,7 +6,7 @@
   width: 100%;
   align-items: center;
   height: 100%;
-  background-color: #190b2500;
+  background-color: transparent;
 }
 
 .committee-container {
@@ -46,9 +46,10 @@
   align-items: center;
   width: 100%;
   padding: 40px 35px;
-  background-color: #363537a8;
+  background-color: rgba(5, 15, 20, 0.85);
   border: 5px solid #B69354;
   border-radius: 8px;
+  backdrop-filter: blur(10px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 2;
@@ -88,7 +89,7 @@
 }
 
 .cards {
-  background-color: #36353767;
+  background-color: rgba(5, 15, 20, 0.8);
   border: 5px solid #B69354;
   max-width: 100%;
   margin: auto;
@@ -121,23 +122,42 @@
   height: auto;
   display: block;
   margin: 50px auto 30px auto;
-  border-radius: 50%;
-  border: 1px solid rgba(182, 147, 84, 0.5);
-  outline: 2px solid #B69354;
-  outline-offset: 10px;
   padding: 35px;
-  background: radial-gradient(circle, rgba(182, 147, 84, 0.1) 0%, rgba(25, 11, 37, 0) 70%);
-  filter: sepia(1) saturate(1.2) brightness(0.9);
+  
+  /* === SHAPE === */
+  border-radius: 50%;
+  
+  /* === DARKER BACKGROUND === */
+  /* Dark teal tint (65% opacity) - Darkens the area so the gold shines, 
+     but still see-through so it blends with the page */
+  background: rgba(5, 15, 20, 0.65); 
+  
+  /* Smooth out the wallpaper lines behind it */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* === THE DOUBLE BORDER === */
+  /* Inner Ring: Thinner, subtle gold */
+  border: 2px solid rgba(182, 147, 84, 0.7);
+  
+  /* Outer Ring: Created using outline and offset */
+  outline: 2px solid rgba(182, 147, 84, 0.7);
+  outline-offset: 12px; /* The gap between the two rings */
+  
+  /* Soft shadow to lift the whole emblem slightly */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
   transition: all 0.4s ease;
 }
 
 .UNSCLogo:hover {
   transform: translateY(-5px);
-  border-color: rgba(182, 147, 84, 0.9);
+  /* Make borders brighter on hover */
+  border-color: #d2aa5b;
   outline-color: #d2aa5b;
-  box-shadow: 0 0 25px rgba(182, 147, 84, 0.4);
-  
-  cursor: pointer;
+  /* Slightly darken background for focus */
+  background: rgba(5, 15, 20, 0.75);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
 .agenda-card-container {
@@ -151,10 +171,10 @@
 }
 
 .two-chair-board {
-  background: rgba(36, 33, 45, 0.6);
+  background: rgba(12, 20, 24, 0.75);
   border: 2px solid rgba(182, 147, 84, 0.85);
   border-radius: 20px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   padding: 40px 40px;
   max-width: 950px;

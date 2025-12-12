@@ -1,11 +1,10 @@
-// UNSC.jsx – Refined version with TwoChairBoard layout
 import React from "react";
 import WorldMap from "./WorldMap";
 import "./committee.css";
 import { ReactComponent as UNSCLogo } from "../images/committee_img/UNSC Logo.svg";
 import BackgroundGuideBox from "./BackgroundGuideBox";
 import AgendaCard from "./AgendaCard";
-import TwoChairBoard from "./TwoChairBoard"; // ⬅️ new component import
+import TwoChairBoard from "./TwoChairBoard";
 
 const message = `
 Dear Delegates,

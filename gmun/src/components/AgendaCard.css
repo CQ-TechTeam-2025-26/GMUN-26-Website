@@ -13,9 +13,10 @@
 
 .agenda-card {
   position: relative;
-  background: rgba(36, 33, 45, 0.6);        
-  border: 2px solid rgba(182, 147, 84, 0.85); 
-  backdrop-filter: blur(8px);               
+  background: rgba(10, 25, 30, 0.80);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, .15);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(182, 147, 84, 0.9);        
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   border-radius: 22px;
   padding: 80px 80px;
@@ -164,3 +165,4 @@
     height: 150px;
   }
 }
+

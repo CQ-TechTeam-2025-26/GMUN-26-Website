@@ -11,9 +11,9 @@
 
 .bg-guide-card {
   border: 2px solid rgba(182, 147, 84, 0.85);
-  background: rgba(25, 15, 37, 0.55);
+  background: rgba(10, 25, 30, 0.80);
   border-radius: 16px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   text-align: center;
   padding: 45px 32px;
   transition: all 0.3s ease;
