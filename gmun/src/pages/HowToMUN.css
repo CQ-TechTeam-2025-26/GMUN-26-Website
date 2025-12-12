@@ -216,6 +216,7 @@
   line-height: 1.8;
   white-space: pre-line;
   color: rgba(248, 248, 248, 0.96);
+  text-align: justify;
 }
 
 /* Sidebar */
@@ -265,16 +266,6 @@
   line-height: 1.7;
 }
 
-/* Brochure inner box (the Canva component wrapper) */
-.howto-brochure {
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  overflow: hidden;
-  margin: 1rem auto 0;
-  width: 90%;
-  max-width: 360px;
-  align-items:center;
-}
 
 /* Small screen tweaks */
 @media (max-width: 600px) {
