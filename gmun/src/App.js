@@ -1,66 +1,64 @@
-import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+// App.js
+import React, { useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { BASE_URL } from "./constants.js";
 import { useDispatch } from "react-redux";
-import { login } from "./store/authSlice.js";
+import { login, logout } from "./store/authSlice.js";
 import axios from "axios";
-import { useState } from "react";
-import { logout } from "./store/authSlice.js";
 import Preloader from "./components/preloader.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [done, setDone] = useState(false); // controls center → top transition
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
-    // Fetch data from the API
-    // Update the state
     document.title = "GMUN 2025";
+
+    const MIN_PRELOADER_TIME = 5000;
+    const start = Date.now();
 
     const fetchData = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/users/profile`, {
           withCredentials: true,
         });
-        console.log(response);
         dispatch(login({ userData: response.data }));
       } catch (error) {
         dispatch(logout());
+      } finally {
+        const elapsed = Date.now() - start;
+        const remaining = Math.max(0, MIN_PRELOADER_TIME - elapsed);
+
+        setTimeout(() => {
+          setDone(true);
+        }, remaining);
       }
-      setLoading(false);
     };
 
     fetchData();
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <>
-        <div>
-          <Preloader />
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <ToastContainer position="top-left" />
-        <div>
-          {/* Navbar will always be displayed */}
-          <NavBar />
+  const isHome = location.pathname === "/"; // only show on home
 
-          {/* Render the child route components using Outlet */}
-          <div>
-            <Outlet />
-          </div>
+  return (
+    <>
+      <ToastContainer position="top-left" />
+      <div>
+        <NavBar />
+        <div>
+          <Outlet />
         </div>
-      </>
-    );
-  }
+      </div>
+
+      {/* Always mounted, but only visible on home */}
+      <Preloader done={done} isHome={isHome} />
+    </>
+  );
 };
 
 export default App;
