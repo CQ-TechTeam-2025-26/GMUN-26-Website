@@ -57,7 +57,7 @@ const Landing = () => {
         <Committees />
       </div> */}
 
-      <div className="announcements" style={{ marginTop: "120px" }}>
+      <div className="announcements">
         <Announcements />
       </div>
 
