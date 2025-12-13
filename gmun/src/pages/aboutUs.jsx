@@ -1,61 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
-/* ------------------ OurJourney (full-screen section) ------------------ */
-// function OurJourney() {
-//   return (
-//     <section
-//       style={{
-//         width: "100vw",
-//         minHeight: "100vh",
-//         background: "#6f6968",
-//         display: "flex",
-//         flexDirection: "column",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         padding: "40px 20px",
-//         textAlign: "center",
-//         color: "#f5ebe7",
-//         marginLeft: "calc(50% - 50vw)",
-//         boxSizing: "border-box",
-//         zIndex: 0
-//       }}
-//     >
-//       <h2
-//         style={{
-//           fontFamily: "'Playfair Display', serif",
-//           fontSize: "64px",
-//           fontWeight: "600",
-//           letterSpacing: "2px",
-//           marginBottom: "20px",
-//         }}
-//       >
-//         OUR JOURNEY
-//       </h2>
-
-//       <p
-//         style={{
-//           maxWidth: "900px",
-//           fontSize: "18px",
-//           lineHeight: "1.7",
-//           color: "#e9e0dc",
-//         }}
-//       >
-//         The journey of GMUN has been one of continuous growth and evolution.
-//         What started as a small initiative has blossomed into a premier event,
-//         drawing participants from across the nation. Each year, we've introduced
-//         new committees, tackled more complex global issues, and enhanced the
-//         delegate experience. Our expansion reflects the dedication of our team
-//         and the enthusiasm of our participants. We are proud of our history and
-//         excited for the future we are building together.
-//         GMUN (Global Model United Nations), the flagship diplomatic simulation conference of IIT Kharagpur, is an initiative driven by Communiqué — the official Soft Skills and Personality Development Society of IIT Kharagpur. Together, we are united by a shared mission: to empower students with confidence, leadership, diplomacy, and real-world professional skills.
-//         What began as a modest initiative has now grown into one of India’s premier national MUN conferences, drawing hundreds of delegates from across the country each year. GMUN continues to evolve by addressing complex global issues, delivering high-quality committee experiences, and fostering meaningful debate, collaboration, and leadership.
-         
-
-
-//       </p>
-//     </section>
-//   );
-// }
+import { motion, AnimatePresence } from 'framer-motion';
 
 /* ------------------ OurStory component with animate -> release flow ------------------ */
 const governors = [
@@ -68,55 +12,55 @@ const governors = [
   "Tejal Saurabhi",
 ];
 const secretaries = [
-    
-"Anshuman Singh",
-"Anusha Baheti",
-"Anushka Jain",
-"Avani Dandawate",
-"Bethina Sri Sathwika" ,
-"Chaitanya Ghuge", 
-"Chirag Patil",
-"Dhruv Narware",
-"Divyansh Joshi",
-"Gaurav Gupta",
-"Harshal Patil",
 
-"Hridyansh Singh",
-"Ishan Sekhar",
-"Kartik Patil",
-"Khushank Chandela",
-"Krishna Pasi",
-"Maadhav Goel",
-"Mugdha Jha",
-"Niraj Borole",
-"Pradyumna", 
-"Pratham Sharma",
-"Priyansu Dash",
-"Rishika Ghodki",
-"Samiya Singhal",
-"Sarthak Yadav",
-"Shashwat Warune",
-"Siddhant Chavda",
-"Sneha Makharia",
-"Tanush Badonia",
-"Tarun Achari",
+  "Anshuman Singh",
+  "Anusha Baheti",
+  "Anushka Jain",
+  "Avani Dandawate",
+  "Bethina Sri Sathwika",
+  "Chaitanya Ghuge",
+  "Chirag Patil",
+  "Dhruv Narware",
+  "Divyansh Joshi",
+  "Gaurav Gupta",
+  "Harshal Patil",
+
+  "Hridyansh Singh",
+  "Ishan Sekhar",
+  "Kartik Patil",
+  "Khushank Chandela",
+  "Krishna Pasi",
+  "Maadhav Goel",
+  "Mugdha Jha",
+  "Niraj Borole",
+  "Pradyumna",
+  "Pratham Sharma",
+  "Priyansu Dash",
+  "Rishika Ghodki",
+  "Samiya Singhal",
+  "Sarthak Yadav",
+  "Shashwat Warune",
+  "Siddhant Chavda",
+  "Sneha Makharia",
+  "Tanush Badonia",
+  "Tarun Achari",
   // add as many as you want
 ];
 
 export default function OurStory() {
   const imgSrc = "/group.jpg"; // update to your image path or import
-  
+
 
 
   return (
-<div
-className="page-bg"
-  style={{
-    color: "#f3f6f7ff",
-    minHeight: "100vh",
-    paddingBottom: "120px"
-  }}
->
+    <div
+      className="page-bg"
+      style={{
+        color: "#f3f6f7ff",
+        minHeight: "100vh",
+        paddingBottom: "120px"
+      }}
+    >
 
 
 
@@ -260,23 +204,192 @@ className="page-bg"
   .container { padding: 32px; margin: 28px 12px 60px; border-radius: 12px; }
 }
 
+ /* ------------ RESPONSIVE FIXES FOR OUR STORY SECTION -------------- */
+
+/* Large screens (default) are fine, so we start reducing at 1200px */
+@media (max-width: 1200px) {
+  .title {
+    font-size: 90px;
+    line-height: 0.9;
+  }
+  .subtitle {
+    font-size: 32px;
+  }
+  .image-wrap {
+    width: 540px;
+    height: 240px;
+  }
+  .lead {
+    font-size: 17px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 24px 60px;
+    margin: 20px 18px;
+  }
+
+  .since {
+    font-size: 36px;
+    letter-spacing: 4px;
+  }
+
+  .title {
+    font-size: 56px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 26px;
+  }
+
+  .image-wrap {
+    width: 100%;
+    height: 200px;
+  }
+
+  .lead {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 16px;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 18px 50px;
+  }
+
+  .since {
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
+
+  .title {
+    font-size: 38px;
+    line-height: 1;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .image-wrap {
+    width: 100%;
+    height: 180px;
+  }
+
+  .lead {
+    font-size: 15px;
+    line-height: 1.55;
+    padding: 12px;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 400px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .lead {
+    font-size: 14px;
+  }
+}
+
+
 
       `}</style>
 
       <div className="container">
-        <div className="since">SINCE 2006</div>
-        <h1 className="title">Our Legacy</h1>
-        <div className="subtitle">SHAPING CONFIDENT LEADERS</div>
+        <motion.div
+          className="since text-xl tracking-widest mb-2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+        >
+          SINCE 2006
+        </motion.div>
+        {/* MAIN TITLE */}
+        <motion.h1
+          className="title text-5xl md:text-6xl font-bold mb-4 drop-shadow-2xl"
+          initial={{ opacity: 0, y: -60, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.3, ease: "easeOut" }}
+        >
+          <motion.span
+            initial={{ backgroundPosition: "0% 50%" }}
+            animate={{ backgroundPosition: "100% 50%" }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+          // style={{
+          // backgroundImage:
+          // "linear-gradient(90deg, #e0c3fc, #8ec5fc, #a18cd1)",
+          // backgroundSize: "200% 200%",
+          // WebkitBackgroundClip: "text",
+          // color: "transparent",
+          // }}
+          >
+            Our Legacy
+          </motion.span>
+        </motion.h1>
 
-        
+
+        {/* SUBTITLE */}
+        <motion.div
+          className="subtitle text-lg md:text-xl tracking-widest mb-10 text-white/80"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.8 }}
+        >
+          SHAPING CONFIDENT LEADERS
+        </motion.div>
+
         {/* STATIC IMAGE */}
-  <div className="image-wrap">
-    <img src={imgSrc} alt="communique group" />
-  </div>
-       
-        <p className="lead">
-          The journey of GMUN and the soft-skills society Communiqué at IIT Kharagpur share a common thread of continuous growth. GMUN has evolved from a small initiative into a premier national event, expanding yearly by tackling complex global issues and enhancing the delegate experience. Over the past decade, Communiqué has become the official personality development body, running intensive programs like the Placement Bootcamp and Internship Training Week, which utilize industry panels and mock interviews to build student confidence, communication, and practical career skills. GMUN (Global Model United Nations), the flagship diplomatic simulation conference of IIT Kharagpur, is an initiative driven by Communiqué — the official Soft Skills and Personality Development Society of IIT Kharagpur. Together, we are united by a shared mission: to empower students with confidence, leadership, diplomacy, and real-world professional skills.What began as a modest initiative has now grown into one of India’s premier national MUN conferences, drawing hundreds of delegates from across the country each year. GMUN continues to evolve by addressing complex global issues, delivering high-quality committee experiences, and fostering meaningful debate, collaboration, and leadership.
-        </p>
+        <motion.div
+          className="image-wrap mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+        >
+          <img
+            src={imgSrc}
+            alt="communique group"
+            className="rounded-xl shadow-2xl w-full max-w-3xl"
+          />
+        </motion.div>
+
+        <motion.p
+          className="lead text-lg md:text-xl max-w-5xl leading-8 text-white/90 text-center md:text-left"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          The journey of GMUN and the soft-skills society Communiqué at IIT Kharagpur
+          share a common thread of continuous growth. GMUN has evolved from a small
+          initiative into a premier national event, expanding yearly by tackling
+          complex global issues and enhancing the delegate experience. Over the past
+          decade, Communiqué has become the official personality development body,
+          running intensive programs like the Placement Bootcamp and Internship
+          Training Week, which utilize industry panels and mock interviews to build
+          student confidence, communication, and practical career skills. GMUN
+          (Global Model United Nations), the flagship diplomatic simulation
+          conference of IIT Kharagpur, is an initiative driven by Communiqué — the
+          official Soft Skills and Personality Development Society of IIT Kharagpur.
+          Together, we are united by a shared mission: to empower students with
+          confidence, leadership, diplomacy, and real-world professional skills. What
+          began as a modest initiative has now grown into one of India’s premier
+          national MUN conferences, drawing hundreds of delegates from across the
+          country each year. GMUN continues to evolve by addressing complex global
+          issues, delivering high-quality committee experiences, and fostering
+          meaningful debate, collaboration, and leadership.
+        </motion.p>
 
         {/* the OurJourney section follows and will be reachable after release */}
         {/* <OurJourney /> */}
@@ -323,48 +436,151 @@ function Carousel({ id, title, description, slides }) {
   };
 
   return (
-    <section aria-labelledby={id + "-title"} className="oe-carousel-section">
-      <h3 id={id + "-title"} className="oe-carousel-title">{title}</h3>
-      <p className="oe-carousel-description">{description}</p>
+    <motion.section
+      aria-labelledby={id + "-title"}
+      className="oe-carousel-section"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      {/* Title Animation */}
+      <motion.h3
+        id={id + "-title"}
+        className="oe-carousel-title"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        {title}
+      </motion.h3>
 
-      <div className="oe-carousel" ref={containerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <button className="oe-arrow oe-arrow-left" onClick={prev} aria-label={`Previous ${title}`}>‹</button>
+      {/* Description Animation */}
+      <motion.p
+        className="oe-carousel-description"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        {description}
+      </motion.p>
 
+      {/* Carousel Animation */}
+      <motion.div
+        className="oe-carousel"
+        ref={containerRef}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      >
+        {/* Left Arrow */}
+        <motion.button
+          className="oe-arrow oe-arrow-left"
+          onClick={prev}
+          aria-label={`Previous ${title}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          ‹
+        </motion.button>
+
+        {/* Slides */}
         <div className="oe-viewport" role="list">
-          {slides.map((s, i) => (
-            <article key={s.id} role="listitem" aria-hidden={i !== index} className={`oe-slide ${i === index ? "active" : ""}`}>
-              <div className="oe-slide-card">
-                <img src={s.image} alt={s.title} className="oe-slide-img" />
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={slides[index].id}
+              role="listitem"
+              className="oe-slide active"
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -80 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                className="oe-slide-card"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <motion.img
+                  src={slides[index].image}
+                  alt={slides[index].title}
+                  className="oe-slide-img"
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+
                 <div className="oe-slide-copy">
-                  <h4 className="oe-slide-heading">{s.title}</h4>
-                  <p className="oe-slide-text">{s.text}</p>
+                  <motion.h4
+                    className="oe-slide-heading"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {slides[index].title}
+                  </motion.h4>
+
+                  <motion.p
+                    className="oe-slide-text"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    {slides[index].text}
+                  </motion.p>
                 </div>
-              </div>
-            </article>
-          ))}
+              </motion.div>
+            </motion.article>
+          </AnimatePresence>
         </div>
 
-        <button className="oe-arrow oe-arrow-right" onClick={next} aria-label={`Next ${title}`}>›</button>
-      </div>
+        {/* Right Arrow */}
+        <motion.button
+          className="oe-arrow oe-arrow-right"
+          onClick={next}
+          aria-label={`Next ${title}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          ›
+        </motion.button>
+      </motion.div>
 
-      <div className="oe-dots" role="tablist" aria-label={`${title} slides`}>
+      {/* Dots */}
+      <motion.div
+        className="oe-dots"
+        role="tablist"
+        aria-label={`${title} slides`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
         {slides.map((_, i) => (
-          <button
+          <motion.button
             key={i}
             className={`oe-dot ${i === index ? "active" : ""}`}
             onClick={() => go(i)}
             aria-label={`Go to slide ${i + 1}`}
             role="tab"
             aria-selected={i === index}
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.8 }}
           />
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
 /* ---------------- OurEvents (vertical stack + palette) ---------------- */
- function OurEvents() {
+function OurEvents() {
   const itwSlides = [
     { id: "itw-1", image: "/events/itw-1.jpg", title: "Panel: Analytics & Data", text: "Industry experts shared data-case strategies and how to prepare for analytics interviews." },
     { id: "itw-2", image: "/events/itw-2.jpg", title: "Workshop: Software Hiring", text: "Hands-on sessions on system design, interviewing and resume building for software roles." },
@@ -373,14 +589,22 @@ function Carousel({ id, title, description, slides }) {
 
   const bootcampSlides = [
     { id: "boot-1", image: "/product.jpg", title: "Product Profile", text: "The Placement Bootcamp begins with a deep dive into the Product profile. Panelists Anushka Singh, Subhayan Dey, and Gautam Jaju shared insights on product preparation, case frameworks, and strategies to excel in product interviews." },
-    { id: "boot-2", image: "finance.jpg", title: "Finance Profile",
-   text: "The Finance session of our Placement Bootcamp featured insights from Vaibhav Maheshwari (BlackRock) and Lakshya Jindal (DSP Mutual Funds). Both panelists shared their journeys into high-impact finance roles, and interview mindsets required for the industry.They addressed common questions about finance recruitments, and offered practical guidance, and presenting reasoning during interviews." },
-    { id: "boot-3", image: "core.jpg", title: "Core Profile", 
-      text: "The Core session of our Placement Bootcamp brought together insights from Yash Agarwal (Texas Instruments), Nikhil Kandregula (Optym) and Srijan Agrawal (Sedemac). This session helped participants gain a real understanding of the core placement landscape and how to prepare effectively." },
-      { id: "boot-4", image: "data.jpg", title: "Data Profile", 
-      text: "The Data session of our Placement Bootcamp featured insights from Suraj Gupta (American Express), Aaditya Shah (HSBC) and Mritunjay Agrahari (Americana Restaurants). This session provided a clear roadmap for students aspiring to break into data-driven roles and excel in analytical interviews."},
-      { id: "boot-5", image: "sde.jpg", title: "SDE & Quant Profile", 
-      text: "The SDE & Quant session of our Placement Bootcamp featured an accomplished panel: Harshith Chowdary (D.E. Shaw & Co.), Mayukha Marla (Databricks), Pranav Nyati (Graviton) and Abhinav Cillanki (Stripe)."},
+    {
+      id: "boot-2", image: "finance.jpg", title: "Finance Profile",
+      text: "The Finance session of our Placement Bootcamp featured insights from Vaibhav Maheshwari (BlackRock) and Lakshya Jindal (DSP Mutual Funds). Both panelists shared their journeys into high-impact finance roles, and interview mindsets required for the industry.They addressed common questions about finance recruitments, and offered practical guidance, and presenting reasoning during interviews."
+    },
+    {
+      id: "boot-3", image: "core.jpg", title: "Core Profile",
+      text: "The Core session of our Placement Bootcamp brought together insights from Yash Agarwal (Texas Instruments), Nikhil Kandregula (Optym) and Srijan Agrawal (Sedemac). This session helped participants gain a real understanding of the core placement landscape and how to prepare effectively."
+    },
+    {
+      id: "boot-4", image: "data.jpg", title: "Data Profile",
+      text: "The Data session of our Placement Bootcamp featured insights from Suraj Gupta (American Express), Aaditya Shah (HSBC) and Mritunjay Agrahari (Americana Restaurants). This session provided a clear roadmap for students aspiring to break into data-driven roles and excel in analytical interviews."
+    },
+    {
+      id: "boot-5", image: "sde.jpg", title: "SDE & Quant Profile",
+      text: "The SDE & Quant session of our Placement Bootcamp featured an accomplished panel: Harshith Chowdary (D.E. Shaw & Co.), Mayukha Marla (Databricks), Pranav Nyati (Graviton) and Abhinav Cillanki (Stripe)."
+    },
   ]
   return (
     <section className="oe-section">
@@ -492,6 +716,7 @@ function Carousel({ id, title, description, slides }) {
   font-weight: 400;
   opacity: 1;
 }
+ 
 
 
       `}</style>
@@ -517,20 +742,40 @@ function Carousel({ id, title, description, slides }) {
 function QuoteBlock() {
   return (
     <section className="quote-section">
-      <div className="quote-card">
-        <p className="quote-text">
+      <motion.div
+        className="quote-card"
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.03 }}
+      >
+        <motion.p
+          className="quote-text"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          viewport={{ once: true }}
+        >
           “Communication is not the art of speaking — it is the courage to express.”
-        </p>
-        <p className="quote-author">
+        </motion.p>
+
+        <motion.p
+          className="quote-author"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          viewport={{ once: true }}
+        >
           Communiqué Team <br />
           IIT Kharagpur
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }
-  /* ------------------ OUR TEAM SECTION ------------------ */
- function OurTeam() {
+/* ------------------ OUR TEAM SECTION ------------------ */
+function OurTeam() {
   return (
     <>
       <style>
@@ -661,32 +906,92 @@ function QuoteBlock() {
       </style>
 
       <section className="team-section">
-        <h2 className="team-heading">OUR TEAM</h2>
 
-        {/* Governors */}
-        <div className="team-block">
+        {/* ⭐ TITLE ANIMATION — EPIC FADE + LETTER SPACING EXPAND */}
+        <motion.h2
+          className="team-heading"
+          initial={{ opacity: 0, letterSpacing: "0.4em", y: 30 }}
+          whileInView={{ opacity: 1, letterSpacing: "0.12em", y: 0 }}
+          transition={{ duration: 1.4, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          OUR TEAM
+        </motion.h2>
+
+        {/* 🌟 GOVERNORS BLOCK */}
+        <motion.div
+          className="team-block"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <div className="team-label governors-label">Governors</div>
-          <div className="governor-row">
+
+          <motion.div
+            className="governor-row"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.15 } },
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {governors.map((name) => (
-              <span key={name} className="governor-name">
+              <motion.span
+                key={name}
+                className="governor-name"
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.95 },
+                  show: { opacity: 1, y: 0, scale: 1 },
+                }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.05 }}
+              >
                 <span className="dot" />
                 {name}
-              </span>
+              </motion.span>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Secretaries */}
-        <div className="team-block">
+        {/* 🌈 SECRETARIES BLOCK */}
+        <motion.div
+          className="team-block"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <div className="team-label">Secretaries</div>
-          <ul className="secretary-list">
+
+          <motion.ul
+            className="secretary-list"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.05 } },
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {secretaries.map((name) => (
-              <li key={name} className="secretary-name">
+              <motion.li
+                key={name}
+                className="secretary-name"
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  show: { opacity: 1, x: 0 },
+                }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                whileHover={{ x: 6 }}
+              >
                 {name}
-              </li>
+              </motion.li>
             ))}
-          </ul>
-        </div>
+          </motion.ul>
+        </motion.div>
       </section>
     </>
   );
