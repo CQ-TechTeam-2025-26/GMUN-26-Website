@@ -56,9 +56,10 @@ const App = () => {
           <div>
             <Outlet />
           </div>
-        
-    </>
-  );
+        </div>
+      </>
+    );
+  }
 };
 
 export default App;

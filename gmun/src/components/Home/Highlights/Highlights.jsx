@@ -9,28 +9,28 @@ const highlights = [
     title: "Delegates",
     number: 200,
     superscript: "+",
-    icon: <Users size={40} />,
+    icon: <Users size={30} />,
   },
   {
     id: 2,
     title: "Committees",
     number: 7,
     superscript: "",
-    icon: <Landmark size={40} />,
+    icon: <Landmark size={30} />,
   },
   {
     id: 3,
     title: "Edition",
     number: 4,
     superscript: "th",
-    icon: <Award size={40} />,
+    icon: <Award size={30} />,
   },
   {
     id: 4,
     title: "Countries",
     number: 30,
     superscript: "+",
-    icon: <Globe size={40} />,
+    icon: <Globe size={30} />,
   },
 ];
 
@@ -64,7 +64,10 @@ const CounterBox = ({ value, superscript, icon, title, duration = 1500 }) => {
 
   return (
     <>
-      <h2 className="heading-icon">{icon}</h2>
+      <div className="heading-icon">
+        <h2 className="icon">{icon}</h2>
+      </div>
+
       <h3 className="higlight">
         {count}
         {superscript}
