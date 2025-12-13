@@ -83,7 +83,6 @@ const Navbar = () => {
           </li>
 
           <li><Link to="/FAQs" className="roll-text" data-text="FAQs" onClick={closeMobileMenu}>FAQs</Link></li>
-          <li><Link to="/discuss" className="roll-text" data-text="Discuss" onClick={closeMobileMenu}>Discuss</Link></li>
           <li><Link to="/AboutUs" className="roll-text" data-text="About" onClick={closeMobileMenu}>About</Link></li>
           <li><Link to="/gallery" className="roll-text" data-text="Gallery" onClick={closeMobileMenu}>Gallery</Link></li>
           <li><Link to="/Sponsors" className="roll-text" data-text="Sponsors" onClick={closeMobileMenu}>Sponsors</Link></li>

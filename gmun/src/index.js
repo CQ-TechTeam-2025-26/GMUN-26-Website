@@ -12,7 +12,6 @@ import Committee from "./components/Committee";
 import Contacts from "./components/Contacts";
 import Guide from "./components/Guide";
 import WorldMap from "./components/WorldMap";
-import Gallery from "./components/Gallery";
 import Gallery2Page from "./components/Gallery2Page";
 import LogoutBtn from "./components/LogoutBtn";
 import FAQs from "./components/FAQs";
