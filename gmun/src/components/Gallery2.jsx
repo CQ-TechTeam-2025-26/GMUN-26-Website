@@ -710,9 +710,38 @@ class InfiniteGridMenu {
         item =>
           new Promise(resolve => {
             const img = new Image();
-            img.crossOrigin = 'anonymous';
+            const primarySrc = item.image || '';
+            const fallbackSrc = item.fallback || '';
+            const isAbsolute = /^https?:\/\//i.test(primarySrc);
+            const isSameOrigin = !isAbsolute || primarySrc.startsWith(window.location.origin);
+            let triedFallback = false;
+
+            // Only set crossOrigin for third-party absolute URLs; omit for same-origin/public assets.
+            if (!isSameOrigin) {
+              img.crossOrigin = 'anonymous';
+            }
+
             img.onload = () => resolve(img);
-            img.src = item.image;
+            img.onerror = () => {
+              if (fallbackSrc && !triedFallback) {
+                triedFallback = true;
+                img.src = fallbackSrc;
+                return;
+              }
+              // Fallback: create a placeholder canvas if the image fails to load
+              const ph = document.createElement('canvas');
+              ph.width = ph.height = 512;
+              const c = ph.getContext('2d');
+              c.fillStyle = '#111';
+              c.fillRect(0, 0, ph.width, ph.height);
+              c.fillStyle = '#FFD700';
+              c.font = 'bold 28px system-ui';
+              c.textAlign = 'center';
+              c.textBaseline = 'middle';
+              c.fillText('Image unavailable', ph.width / 2, ph.height / 2);
+              resolve(ph);
+            };
+            img.src = primarySrc;
           })
       )
     ).then(images => {
@@ -914,10 +943,41 @@ export default function InfiniteMenu({ items = [] }) {
   const canvasRef = useRef(null);
   const [activeItem, setActiveItem] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
+  const [readyToInit, setReadyToInit] = useState(false);
+
+  // Lazy-init: only build the WebGL scene once the canvas enters the viewport
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let observer;
+    const onIntersect = entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setReadyToInit(true);
+          if (observer) observer.disconnect();
+        }
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(onIntersect, { threshold: 0.1 });
+      observer.observe(canvas);
+    } else {
+      // Fallback: defer a tick if IO isn't supported
+      setTimeout(() => setReadyToInit(true), 150);
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     let sketch;
+
+    if (!readyToInit) return;
 
     const handleActiveItem = index => {
       const itemIndex = index % items.length;
@@ -942,7 +1002,7 @@ export default function InfiniteMenu({ items = [] }) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [items]);
+  }, [items, readyToInit]);
 
   const handleButtonClick = () => {
     if (!activeItem?.link) return;
