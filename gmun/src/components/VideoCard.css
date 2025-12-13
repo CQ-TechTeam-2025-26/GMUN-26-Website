@@ -45,7 +45,7 @@
 .howto-video-title {
   margin-top: 0.75rem;
   text-align: center;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #ffe9a3;
   letter-spacing: 0.5px;
@@ -64,10 +64,11 @@
 }
 
 .howto-videos-title {
-  font-size: 1.9rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #ffe9a3;
   text-align: center;
+  margin-top: 0;
   margin-bottom: 1.5rem;
   text-shadow: 0 0 16px rgba(255, 215, 100, 0.35);
 }

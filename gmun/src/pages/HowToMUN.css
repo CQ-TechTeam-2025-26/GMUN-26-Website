@@ -131,7 +131,7 @@
 .howto-card {
   border-radius: 1.4rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(0, 0, 0, 0.16);
+  background: rgba(0, 0, 0, 0.40);
   backdrop-filter: blur(12px);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -150,7 +150,7 @@
 
 .howto-card-inner {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.1rem;
   padding: 1.2rem 1.8rem 1.45rem;
 }
@@ -162,7 +162,6 @@
 }
 
 .howto-card-number {
-  margin-top: 0.25rem;
   flex-shrink: 0;
   width: 2.25rem;
   height: 2.25rem;
@@ -282,3 +281,41 @@
     padding: 0.45rem 0.9rem;
   }
 }
+
+.howto-videos-subtitle {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  max-width: 40rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(243, 243, 243, 0.86);
+}
+
+.handbook-link {
+  display: block;
+}
+
+.handbook-image {
+  width: 100%;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.handbook-image:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .howto-card-header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .howto-card-title {
+    width: 100%;
+    text-align: center;
+  }
+}
+

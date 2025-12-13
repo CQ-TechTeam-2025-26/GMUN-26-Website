@@ -7,74 +7,161 @@ import VideoCard from "../components/VideoCard";
 const data = [
   {
     q: "What is MUN?",
-    a: `Model United Nations (MUN) is a diplomatic simulation where students represent countries and work to solve global issues through debate, negotiation, and collaborative policy writing. Delegates participate in structured discussions, caucuses, and resolution drafting that mirror real UN procedures. Beyond academics, MUN builds confidence, research skills, critical thinking, and diplomacy by letting students step into the role of global decision-makers. GMUN offers a structured space for students to practice international problem-solving while developing strong leadership and communication skills.`
+    a:
+      <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+        <li>
+          <b>Model United Nations (MUN)</b> is a <i>simulation of the United Nations</i> where students act as representatives of countries.
+        </li>
+        <li>
+          Delegates debate <i>global issues,</i> negotiate with other countries, and <i>draft policy-based solutions.</i>
+        </li>
+        <li>
+          Committees follow <b>formal UN procedures</b>, including speeches, caucuses, and voting.
+        </li>
+        <li>
+          Participants engage in :<ul><i>
+            <li>Public Speaking and Formal Debate</li>
+            <li>Negotiation and Diplomacy</li>
+            <li>Resolution and Policy Writing</li></i>
+          </ul>
+        </li>
+        <li>
+          MUN helps improve <b>confidence and leadership, research and critical thinking, communication and teamwork skills.</b>
+        </li>
+        <li>
+          Overall, MUN allows students to step intto the role of <b>global decision-makers</b> and practice <i>international problem-solving.</i>
+        </li>
+      </ul>
   },
+
   {
     q: "What are key MUN terminologies?",
-    a: <ul>
+    a: <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
       <li>
-        <strong>Resolution:</strong> The final actionable document drafted by delegates as a solution to the committee’s agenda.
+        <strong>Agenda:</strong> The topic(s) being discussed in a committee.
       </li>
       <li>
-        <strong>Preambulatory Clauses:</strong> Introduce context, intentions, and prior international efforts.
+        <strong>Resolution:</strong> The final written document proposing solutions to the agenda.
       </li>
       <li>
-        <strong>Operative Clauses:</strong> Propose specific actions to address the issue.
+        <strong>Preambulatory Clauses:</strong> Explain background, context, and prior international efforts.
       </li>
       <li>
-        <strong>Position Paper:</strong> A concise document summarizing your country’s stance, background research, and proposed solutions.
+        <strong>Operative Clauses:</strong> Outline specific actions and solutions.
       </li>
       <li>
-        <strong>Lobbying:</strong> The informal negotiation period where delegates merge drafts, form alliances, and gather signatories before the resolution is formally presented.
+        <strong>Position Paper:</strong> A short document explaining a country’s stance, background research, and proposed solutions.
       </li>
       <li>
-        <strong>Motions:</strong> Used to control the flow of debate.
+        <strong>Caucus:</strong> A discussion period (moderated or unmoderated).
       </li>
       <li>
-        <strong>Points:</strong> Allow delegates to clarify procedure or ask questions.
-      </li>
-      <li>
-        <strong>Amendments:</strong> Enable edits and improvements to resolutions.
-      </li>
-      <li>
-        <strong>Mastery of Terminology:</strong> Understanding these terms supports smoother debate, stronger resolution writing, and more confident committee participation.
+        <strong>Amendments:</strong> A change or improvement made to a draft resolution.
       </li>
     </ul>
 
   },
   {
-  q: "What is the typical flow of an MUN?",
-  a: `
-  - Roll Call marks the beginning of committee.
-  - The agenda is set to determine the topic order.
-  - Delegates enter the Speakers' List to give formal speeches on national positions.
-  - Moderated Caucuses allow focused discussion on specific subtopics.
-  - Unmoderated Caucuses permit free movement, collaboration, and resolution drafting.
-  - Delegates negotiate wording, merge drafts, and build alliances.
-  - Draft resolutions are presented to the committee.
-  - Points of Information and amendments help refine the document.
-  - Voting occurs either clause-by-clause or as a whole, depending on committee rules.
-  `
-},
+    q: "What is the typical flow of an MUN?",
+    a: <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+      <li>
+        <b>Roll Call</b> marks the <i>beginning</i> of a committee session.
+      </li>
+      <li>
+        Agenda is set if <i>multiple topics</i> exist.
+      </li>
+      <li>
+        Delegates are added to the <b>Speakers' List</b> for formal speeches.
+      </li>
+      <li>
+        <b>Moderated Caucuses</b> for structured discussion on subtopics.
+      </li>
+      <li>
+        <b>Unmoderated Caucuses</b> for informal negotiation and drafting.
+      </li>
+      <li>
+        <i>Draft resolutions</i> are written, merged, and presented.
+      </li>
+      <li>
+        <i>Amendments and Questions</i> refine the draft.
+      </li>
+      <li>
+        <b>Voting</b> takes place on the proposed resolutions.
+      </li>
+    </ul>
+  },
 
   {
     q: "How do I research for my committee?",
-    a: `Strong research is essential for effective MUN participation. Start by understanding your country’s foreign policy, alliances, treaties, and past actions on the topic. Analyze historical context, geopolitical and economic interests, and humanitarian factors that influence national decisions. Review UN resolutions, international agreements, NGO reports, and expert analyses. Organize your findings into background information, national stance, global positions, and potential clauses. Knowing both allies’ and opponents’ perspectives helps you negotiate, draft resolutions that gain broad support, and deliver stronger speeches and lobbying efforts.`
+    a:
+      <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+        <li>
+          <b>Understand the Committee and Agenda :</b>
+          <ul><i>
+            <li>Know the mandate and powers of your committee.</li>
+            <li>Understand the agenda context and why the issue matters globally.</li></i>
+          </ul>
+        </li>
+        <li>
+          <b>Research your Country :</b> Study your country's <i>foreign policy and ideology, national interests related to the agendas, economic, political, and humanitarian priorities.</i>
+        </li>
+        <li>
+          <b>Past UN and International Action :</b> Review <i>previous UN resolutions, international treaties and agreements, statements made by your country in the UN.</i>
+        </li>
+        <li>
+          <b>Blocs, Allies, and Opponents :</b> Identify<i> natural allies and regional blocs, countries with opposing views, possible negotiation partners.</i>
+        </li>
+        <li>
+          <b>Solutions and Policy Proposals :</b>
+          <ul><i>
+            <li>Develop realistic and actionable solutions aligned with your country’s stance.</li>
+            <li>Ensure proposals respect international law and committee mandate.</li></i>
+          </ul>
+        </li>
+        <li>
+          <b>Sources to Use :</b>
+          <ul><i>
+            <li>UN official websites and documents</li>
+            <li>Government and foreign ministry statements</li>
+            <li>Reports from NGOs and international organizations</li>
+            <li>Reputed news outlets and policy analyses</li></i>
+          </ul>
+        </li>
+      </ul>
   },
   {
-  q: "What are my responsibilities as a delegate?",
-  a: `
-  - Represent your assigned country’s stance accurately with professionalism and diplomacy.
-  - Prepare speeches, draft resolutions, engage in lobbying, and collaborate during caucuses.
-  - Respond to questions confidently and participate actively in debate.
-  - Stay informed about global developments and understand geopolitical dynamics.
-  - Approach discussions respectfully and practice adaptability in negotiations.
-  - Know when to compromise, when to stand firm, and how to build consensus.
-  - Contribute meaningfully to committee discussions and follow MUN procedure.
-  - Work toward actionable and realistic solutions.
-  - Successful GMUN delegates demonstrate knowledge, teamwork, leadership, and strategic thinking throughout all sessions.
-  `
-}
+    q: "What are my responsibilities as a delegate?",
+    a: <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+      <li>Represent your assigned country accurately and diplomatically.</li>
+      <li>Deliver speeches and actively participate in debate.</li>
+      <li>Negotiate, lobby, and collaborate during caucuses.</li>
+      <li>Draft, support, or amend resolutions.</li>
+      <li>Follow rules of procedure and maintain decorum.</li>
+      <li>Balance firmness with compromise to build consensus.</li>
+      <li>Contribute meaningfully toward practical solutions.</li>
+    </ul>
+  },
+  {
+    q: "What are the important Motions and Points?",
+    a: <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+      <li>
+        <ul><b>Motions :</b>
+          <li><b>Motion for Moderated Caucus :</b> Structured discussion with a speaker’s time.</li>
+          <li><b>Motion for Unmoderated Caucus :</b> Informal discussion and resolution drafting.</li>
+          <li><b>Motion to suspend the meeting :</b> For breaks (lunch, tea, overnight).</li>
+          <li><b>Motion to adjourn the meeting :</b> Ends the committee session.</li>
+        </ul>
+      </li>
+      <li>
+        <ul><b>Points :</b>
+          <li><b>Point of Order :</b>  To correct a procedural mistake.</li>
+          <li><b>Point of Information :</b> To ask a question regarding a speech or resolution.</li>
+          <li><b>Point of Personal Privilege :</b> For personal discomfort affecting participation.</li>
+          <li><b>Point of Reply :</b> Used when a country is personally or directly insulted.</li>
+        </ul>
+      </li>
+    </ul>
+  }
 
 ];
 
@@ -190,7 +277,7 @@ export default function HowToMUN() {
                 official GMUN background guide.
               </p>
               <div className="howto-brochure">
-                <BackgroundGuideBox link="https://www.canva.com/design/DAGbOepToVo/54kVE01-QsrXxBhgB0pppg/edit" />
+                <BackgroundGuideBox link="https://drive.google.com/file/d/1P9IxgzJchOqVRAeyKkAH2qduoXtuab3F/view?usp=sharing" />
               </div>
             </div>
           </motion.aside>
@@ -204,6 +291,11 @@ export default function HowToMUN() {
           className="howto-videos-section"
         >
           <h2 className="howto-videos-title">Training Videos</h2>
+
+          <p className="howto-videos-subtitle">
+            These videos provide a concise overview of MUN procedure and delegate
+            expectations and are highly recommended for beginners.
+          </p>
 
           <div className="howto-videos-grid">
             <VideoCard

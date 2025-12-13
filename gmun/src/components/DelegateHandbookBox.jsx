@@ -5,17 +5,17 @@ import { color } from "framer-motion";
 
 export default function BackgroundGuideBox({ link }) {
   return (
-    <a
+     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-guide-link"
+      className="handbook-link"
     >
-      <div className="bg-guide-card">
-        <p className="bg-guide-text">The Complete Delegate Handbook</p>
-        <p style = {{color : 'white'}}>Your all-in-one guide to succeeding in any committee.
-                <br></br>Get detailed insights, tips, and templates.</p>       
-      </div>
+      <img
+        src="/GMUN Delegate Handbook.png"
+        alt="GMUN Delegate Handbook"
+        className="handbook-image"
+      />
     </a>
   );
 }
