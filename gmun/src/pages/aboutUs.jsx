@@ -302,7 +302,141 @@ export default function OurStory() {
   .lead {
     font-size: 14px;
   }
+      }
+    .legacy-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 48px;
+  margin-top: 56px;
+  text-align: left;
+
+  align-items: stretch;   /* 🔑 IMPORTANT */
 }
+
+
+
+.legacy-left h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  margin-bottom: 16px;
+  color: #fefcf8;
+}
+
+.legacy-left p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  color: rgba(255,255,255,0.9);
+  max-width: 92%;
+}
+
+.legacy-left,
+.legacy-right {
+  height: 100%;
+}
+
+.legacy-right {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr); /* 🔑 cards auto share height */
+  gap: 20px;
+  height: 100%;                       /* 🔑 full column height */
+}
+
+
+
+
+  /* ===== PREMIUM GLASS CARDS (OUR LEGACY) ===== */
+
+.legacy-card {
+  position: relative;
+  overflow: hidden;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+  border-radius: 18px;
+  padding: 22px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  transition: all 0.45s ease;
+}
+
+
+/* subtle gradient shine */
+.legacy-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.35)
+  );
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* HOVER MAGIC ✨ */
+.legacy-card:hover {
+  transform: translateY(-6px) scale(1.02);
+
+  box-shadow:
+    0 28px 65px rgba(0, 0, 0, 0.25),
+    0 0 32px rgba(231, 182, 92, 0.35); /* golden glow */
+}
+
+/* CARD TITLE */
+.legacy-card h4 {
+  font-size: 15.5px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #0b2e16;   /* dark green for contrast */
+  letter-spacing: 0.02em;
+}
+
+/* CARD TEXT */
+.legacy-card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #243a2a;     /* readable on glass */
+}
+/* left accent line */
+.legacy-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    #e7b65c,
+    #f3d18a
+  );
+  opacity: 0.85;
+}
+
+
+@media (max-width: 900px) {
+  .legacy-layout {
+    grid-template-columns: 1fr;
+  }
+}
+      }
+
 
 
 
@@ -364,32 +498,9 @@ export default function OurStory() {
             className="rounded-xl shadow-2xl w-full max-w-3xl"
           />
         </motion.div>
+        <LegacySplit />
 
-        <motion.p
-          className="lead text-lg md:text-xl max-w-5xl leading-8 text-white/90 text-center md:text-left"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        >
-          The journey of GMUN and the soft-skills society Communiqué at IIT Kharagpur
-          share a common thread of continuous growth. GMUN has evolved from a small
-          initiative into a premier national event, expanding yearly by tackling
-          complex global issues and enhancing the delegate experience. Over the past
-          decade, Communiqué has become the official personality development body,
-          running intensive programs like the Placement Bootcamp and Internship
-          Training Week, which utilize industry panels and mock interviews to build
-          student confidence, communication, and practical career skills. GMUN
-          (Global Model United Nations), the flagship diplomatic simulation
-          conference of IIT Kharagpur, is an initiative driven by Communiqué — the
-          official Soft Skills and Personality Development Society of IIT Kharagpur.
-          Together, we are united by a shared mission: to empower students with
-          confidence, leadership, diplomacy, and real-world professional skills. What
-          began as a modest initiative has now grown into one of India’s premier
-          national MUN conferences, drawing hundreds of delegates from across the
-          country each year. GMUN continues to evolve by addressing complex global
-          issues, delivering high-quality committee experiences, and fostering
-          meaningful debate, collaboration, and leadership.
-        </motion.p>
+        
 
         {/* the OurJourney section follows and will be reachable after release */}
         {/* <OurJourney /> */}
@@ -532,6 +643,17 @@ function Carousel({ id, title, description, slides }) {
                   >
                     {slides[index].text}
                   </motion.p>
+                   {/* 🎥 YouTube Button */}
+  {slides[index].youtube && (
+    <a
+      href={slides[index].youtube}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="oe-youtube-btn"
+    >
+      ▶ Watch on YouTube
+    </a>
+  )}
                 </div>
               </motion.div>
             </motion.article>
@@ -582,28 +704,70 @@ function Carousel({ id, title, description, slides }) {
 /* ---------------- OurEvents (vertical stack + palette) ---------------- */
 function OurEvents() {
   const itwSlides = [
-    { id: "itw-1", image: "/events/itw-1.jpg", title: "Panel: Analytics & Data", text: "Industry experts shared data-case strategies and how to prepare for analytics interviews." },
-    { id: "itw-2", image: "/events/itw-2.jpg", title: "Workshop: Software Hiring", text: "Hands-on sessions on system design, interviewing and resume building for software roles." },
-    { id: "itw-3", image: "/events/itw-3.jpg", title: "Session: Finance Profiles", text: "Overview of finance recruitments and mock rounds to help students sharpen their profiles." },
-  ];
+  {
+    id: "itw-1",
+    image: "/consult_itw.jpg",
+    title: "Consult Profile",
+    text: "The Consulting session of Internship Training Week focused on structured problem-solving, guesstimates, and case interview fundamentals. The session provided a clear understanding of consulting recruitments, interview expectations, and frameworks used by top firms.",
+    youtube: "https://youtu.be/8xhy-I04GXA?si=-_4lBDvFnUQZF9lu"
+  },
+  {
+    id: "itw-2",
+    image: "/core_itw.jpg",
+    title: "Core Profile",
+    text: "The Core Profile session offered insights into core engineering roles and recruitment processes. Participants gained clarity on preparation strategies, technical expectations, and how to approach interviews for core sector companies.",
+    youtube: "https://youtu.be/Mp6BNRwpVl0?si=XFmqCwmddaQThxWr"
+  },
+  {
+    id: "itw-3",
+    image: "/data_itw.jpg",
+    title: "Data Profile",
+    text: "The Data Profile session introduced students to analytics and data-driven roles. It covered resume shortlisting, analytical problem-solving, and interview preparation strategies required for data and analytics internships.",
+    youtube: "https://youtu.be/NeFpnUhDSUU?si=BfD0yrrV2sbbGlHF"
+  },
+  {
+    id: "itw-4",
+    image: "/software_itw.jpg",
+    title: "Software & Quant Profile",
+    text: "The Software and Quant session focused on coding interviews, problem-solving approaches, and preparation strategies for technical and quantitative roles. The session helped students understand the expectations of software and quant recruiters.",
+    youtube: "https://youtu.be/K_rtXcd9Wpc?si=s_jpERGs48I3OG9Z"
+  },
+  {
+    id: "itw-5",
+    image: "/finance_itw.png",
+    title: "Finance Profile",
+    text: "The Finance Profile session provided an overview of finance internships, recruitment processes, and interview structures. It addressed common doubts regarding finance roles and shared preparation strategies for finance-driven organizations.",
+    youtube: "https://youtu.be/4x8IvY4LzRQ?si=rPXA3EM9PgzHbnHQ"
+  },
+  {
+    id: "itw-6",
+    image: "/product_itw.jpg",
+    title: "Product/FMCG Profile",
+    text: "The Product Profile session introduced students to product thinking, problem-solving approaches, and case-based interviews relevant to product internships.",
+    youtube: "https://www.youtube.com/watch?v=-EuKCWukA4Q"
+  }
+];
+
 
   const bootcampSlides = [
-    { id: "boot-1", image: "/product.jpg", title: "Product Profile", text: "The Placement Bootcamp begins with a deep dive into the Product profile. Panelists Anushka Singh, Subhayan Dey, and Gautam Jaju shared insights on product preparation, case frameworks, and strategies to excel in product interviews." },
+    { id: "boot-1", image: "/product.jpg", title: "Product Profile", text: "The Placement Bootcamp begins with a deep dive into the Product profile. Panelists Anushka Singh, Subhayan Dey, and Gautam Jaju shared insights on product preparation, case frameworks, and strategies to excel in product interviews.", 
+      youtube: ""
+     },
     {
       id: "boot-2", image: "finance.jpg", title: "Finance Profile",
-      text: "The Finance session of our Placement Bootcamp featured insights from Vaibhav Maheshwari (BlackRock) and Lakshya Jindal (DSP Mutual Funds). Both panelists shared their journeys into high-impact finance roles, and interview mindsets required for the industry.They addressed common questions about finance recruitments, and offered practical guidance, and presenting reasoning during interviews."
+      text: "The Finance session of our Placement Bootcamp featured insights from Vaibhav Maheshwari and Lakshya Jindal. Both panelists shared their journeys into high-impact finance roles, and interview mindsets required for the industry.They addressed common questions about finance recruitments."
     },
     {
       id: "boot-3", image: "core.jpg", title: "Core Profile",
-      text: "The Core session of our Placement Bootcamp brought together insights from Yash Agarwal (Texas Instruments), Nikhil Kandregula (Optym) and Srijan Agrawal (Sedemac). This session helped participants gain a real understanding of the core placement landscape and how to prepare effectively."
+      text: "The Core session of our Placement Bootcamp brought together insights from Yash Agarwal, Nikhil Kandregula and Srijan Agrawal. This session helped participants gain a real understanding of the core placement landscape."
     },
     {
       id: "boot-4", image: "data.jpg", title: "Data Profile",
-      text: "The Data session of our Placement Bootcamp featured insights from Suraj Gupta (American Express), Aaditya Shah (HSBC) and Mritunjay Agrahari (Americana Restaurants). This session provided a clear roadmap for students aspiring to break into data-driven roles and excel in analytical interviews."
+      text: "The Data session of our Placement Bootcamp featured insights from Suraj Gupta, Aaditya Shah and Mritunjay Agrahari. This session provided a clear roadmap for students aspiring to break into data-driven role."
     },
     {
       id: "boot-5", image: "sde.jpg", title: "SDE & Quant Profile",
-      text: "The SDE & Quant session of our Placement Bootcamp featured an accomplished panel: Harshith Chowdary (D.E. Shaw & Co.), Mayukha Marla (Databricks), Pranav Nyati (Graviton) and Abhinav Cillanki (Stripe)."
+      text: "The SDE & Quant session of our Placement Bootcamp featured an accomplished panel: Harshith Chowdary, Mayukha Marla, Pranav Nyati and Abhinav Cillanki."
     },
   ]
   return (
@@ -716,6 +880,114 @@ function OurEvents() {
   font-weight: 400;
   opacity: 1;
 }
+  .oe-youtube-btn {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #ff4d4d, #ff0000);
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  box-shadow: 0 10px 24px rgba(255, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.oe-youtube-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(255, 0, 0, 0.45);
+}
+
+  /* ---------------- EVALUe BOOK FEATURE ---------------- */
+
+.evalue-section {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.evalue-card {
+  max-width: 900px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* Cover */
+.evalue-cover {
+  width: 260px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* Text content */
+.evalue-content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 56px;
+  margin: 0;
+  color: #05290cff;
+}
+
+.evalue-tagline {
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 8px 0 22px;
+  color: #e7b65c;
+}
+
+.evalue-description {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #f2efe9;
+  margin-bottom: 28px;
+}
+
+/* Button */
+.evalue-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e7b65c, #f2c57a);
+  color: #05290c;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.evalue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(231,182,92,0.45);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .evalue-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .evalue-content h3 {
+    font-size: 42px;
+  }
+}
+
  
 
 
@@ -729,12 +1001,14 @@ function OurEvents() {
 
         <div className="oe-grid">
           {/* Internship Training Week first */}
-          <Carousel id="itw" title="CDC Internship Week" description="Internships are the first step of an engineer in the corporate world. This step comes with many doubts. To equip our fellow KGPians with the proper knowledge from the people who have aced in their respective domain, we organized the CDC Internship Week covering Analytics, Software, Core, Finance and FMCG profiles." slides={itwSlides} />
+          <Carousel id="itw" title="Internship Training Week" description="To equip our fellow KGPians with the proper knowledge from the people who have aced in their respective domain, we organized the CDC Internship Week covering Analytics, Software, Core, Finance and FMCG profiles." slides={itwSlides} />
 
           {/* Placement Bootcamp below it */}
-          <Carousel id="boot" title="Placement Bootcamp" description="To help final year students, Communiqué organized the all-in-one Placement Bootcamp covering Analytics, Software, Core, Finance, FMCG, and Product profiles. The main motive of this session was to clear doubts about the selection procedures of top companies and get some valuable tips and tricks to ace the selection rounds" slides={bootcampSlides} />
+          <Carousel id="boot" title="Placement Bootcamp" description="To help final year students, Communiqué organized the all-in-one Placement Bootcamp covering Analytics, Software, Core, Finance, FMCG, and Product profiles." slides={bootcampSlides} />
         </div>
+         <EvalueBook/>
       </div>
+     
     </section>
   );
 }
@@ -947,7 +1221,7 @@ function OurTeam() {
                   show: { opacity: 1, y: 0, scale: 1 },
                 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                whileHover={{ scale: 1.05 }}
+                
               >
                 <span className="dot" />
                 {name}
@@ -985,7 +1259,7 @@ function OurTeam() {
                   show: { opacity: 1, x: 0 },
                 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                whileHover={{ x: 6 }}
+                
               >
                 {name}
               </motion.li>
@@ -995,4 +1269,115 @@ function OurTeam() {
       </section>
     </>
   );
+
+  
 }
+function EvalueBook() {
+  return (
+    <motion.section
+      className="evalue-section"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <div className="evalue-card">
+        
+        {/* Book Cover */}
+        <motion.img
+          src="/evalue.jpg"   // place cover image in public folder
+          alt="Evalue Book Cover"
+          className="evalue-cover"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.4 }}
+        />
+
+        {/* Content */}
+        <div className="evalue-content">
+          <h3>Evalue</h3>
+          <p className="evalue-tagline">The Art of a Perfect Guess</p>
+
+          <p className="evalue-description">
+            <strong>Evalue</strong> is a curated publication by Communiqué, IIT Kharagpur,
+            A focused guide to mastering guesstimates for consulting interviews. Evalué features 75 handpicked problems across industries, each solved with clear structure and logical reasoning. Designed for aspirants across IITs, IIMs, and top B-schools, it helps sharpen thinking, handle ambiguity, and build confidence for the toughest interview rounds.
+          </p>
+
+          {/* CTA */}
+          <a
+            href="/evalue.pdf"   // put PDF in public folder
+            target="_blank"
+            rel="noopener noreferrer"
+            className="evalue-btn"
+          >
+            Read the Book →
+          </a>
+        </div>
+
+      </div>
+    </motion.section>
+  );
+}
+function LegacySplit() {
+  return (
+    <motion.section
+      className="legacy-layout"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {/* LEFT */}
+      <motion.div
+        className="legacy-left"
+        initial={{ x: -40, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.7 }}
+      >
+        <h3>A Journey of Continuous Growth</h3>
+
+        <p>
+          The journey of GMUN and the soft-skills society Communiqué at IIT
+          Kharagpur shares a common thread of ambition and excellence.
+        </p>
+
+        <p>
+        What began as a modest initiative in 2006 has evolved into one of India's premier national MUN conferences. GMUN has expanded yearly by tackling complex global issues and enhancing the delegate experience, drawing hundreds of aspiring diplomats from across the country.
+        </p>
+
+        <p>
+          Today, as the flagship diplomatic simulation conference of IIT Kharagpur, we are driven by a singular mission: to foster meaningful debate, collaboration, and leadership.
+        </p>
+      </motion.div>
+
+      {/* RIGHT */}
+      <motion.div
+        className="legacy-right"
+        initial={{ x: 40, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.15 }}
+      >
+        <div className="legacy-card">
+          <h4>Communiqué’s Role</h4>
+          <p>
+          Over the past decade, Communiqué has become the official personality development body, running intensive programs like the Placement Bootcamp and Internship Training Week.
+          </p>
+        </div>
+
+        <div className="legacy-card">
+          <h4>Our Shared Mission</h4>
+          <p>
+            Together, we are united to empower students with confidence, leadership, diplomacy, and real-world professional skills utilizing industry panels and mock interviews.
+          </p>
+        </div>
+
+        <div className="legacy-card">
+          <h4>Global Impact</h4>
+          <p>
+            GMUN continues to evolve by addressing complex global issues, delivering high-quality committee experiences, and fostering the next generation of leaders.
+          </p>
+        </div>
+      </motion.div>
+    </motion.section>
+  );
+}
+
