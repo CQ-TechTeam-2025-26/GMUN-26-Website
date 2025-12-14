@@ -3,11 +3,30 @@ import React, { useState } from "react";
 import "../styles/FAQ.css";
 
 const FAQ_DATA = [
-  { q: "How do I register for the conference?", a: "Registration is happening through unstop. Click on the Register button on the website for that." },
-  { q: "What does the registration fee include?", a: "The delegate fee covers entry to all committee sessions, training materials, delegate kits, and meals during the conference. Accommodation charges for outstation participants are separate." },
-  { q: "Is the conference being held online or offline?", a: "GMUN 4.0 will feature 6 offline committees hosted on the IIT Kharagpur campus and 1 online committee." },
-  { q: "Are there any awards or recognitions?", a: "Yes, we have various awards including Best Delegate and Best Commendation. Special Mention awards are also given for diplomatic excellence and constructive participation." },
-  { q: "How are country and committee assignments determined?", a: "Assignments are based on the details you provide during registration — including your preferences, past MUN experience, and quality of responses. The Secretariat ensures balanced representation across countries and ideologies. Final allotments are released a few weeks before the conference and cannot be changed once announced." },
+  { 
+    q: "How do I register for the conference?", 
+    a: "Registration is conducted through Unstop. Please click the Register button on the HOME page, which will redirect you to the official Unstop listing." 
+  },
+  { 
+    q: "Is GMUN 4.0 being held online or offline?", 
+    a: "GMUN 4.0 will feature six offline committees hosted on the IIT Kharagpur campus and one online committee. Delegates may choose their preferred mode during registration." 
+  },
+  { 
+    q: "What does the registration fee include?", 
+    a: "The registration fee covers access to all committee sessions, conference materials and delegate kits, and meals and accommodation for the duration of the event." 
+  },
+  { 
+    q: "Can first-time delegates participate in GMUN?", 
+    a: "Absolutely. GMUN welcomes delegates of all experience levels. Our experienced Executive Board will guide participants through procedures and ensure a constructive learning environment." 
+  },
+  { 
+    q: "How are committee and country allotments decided?", 
+    a: "Allotments are based on the information provided during registration, including committee and country preferences, prior MUN experience (if any), and quality of responses submitted. The Secretariat ensures balanced representation across committees. Allotments are released a few weeks prior to the conference and are final." 
+  },
+  { 
+    q: "What documents should delegates carry to the conference?", 
+    a: "Delegates must carry a valid government-issued photo ID and their registration confirmation." 
+  },
 ];
 
 export default function FAQ() {
