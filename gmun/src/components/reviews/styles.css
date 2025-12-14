@@ -37,6 +37,7 @@
   padding: 1rem;
   width: max-content;
   animation: scrollReviews 20s linear infinite;
+  max-height: 250px;
 }
 
 .reviews-track:hover {
@@ -59,7 +60,7 @@
   border: 1px solid rgba(240, 180, 91, 0.15);
   backdrop-filter: blur(10px);
 
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: all 0.35s ease, box-shadow 0.35s ease;
 }
 
 /* Hover glow */
@@ -93,12 +94,57 @@
 .review-text {
   color: #d6dfe2;
   line-height: 1.65;
+  max-height: 50%;
 }
 
 .review-text p {
   font-size: 0.98rem;
   line-height: 1.65;
   color: #d6dfe2;
+  overflow: hidden;
+}
+
+/* Firefox */
+.review-text {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240, 180, 91, 0.55) rgba(10, 35, 40, 0.4);
+}
+
+/* Chrome, Edge, Safari */
+.review-text::-webkit-scrollbar {
+  width: 10px;
+}
+
+.review-text::-webkit-scrollbar-track {
+  background: rgba(10, 35, 40, 0.35);
+  border-radius: 999px;
+}
+
+.review-text::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(240, 180, 91, 0.9),
+    rgba(200, 145, 70, 0.9)
+  );
+  border-radius: 999px;
+  border: 2px solid rgba(10, 35, 40, 0.6);
+}
+
+.review-text::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #f7d28a,
+    #f0b45b
+  );
+}
+
+
+.multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 50%;
 }
 
 /* Infinite scroll animation */
