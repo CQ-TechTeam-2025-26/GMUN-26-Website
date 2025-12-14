@@ -30,3 +30,4 @@ const useInView = (options = { threshold: 0.3 }) => {
 };
 
 export default useInView;
+
