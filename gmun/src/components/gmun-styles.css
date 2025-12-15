@@ -392,3 +392,22 @@ section.mb-8::before,
 .inline-block {
   display: inline-block;
 }
+
+/* Media queries for responsive adjustments */
+@media (max-height: 800px) {
+  .gm-card-sticky {
+    top: calc(45vh - var(--sticky-half, 120px));
+  }
+  .gm-card-sticky-short {
+    top: calc(20vh - var(--sticky-half, 120px));
+  }
+}
+
+@media (min-height: 1200px) {
+  .gm-card-sticky {
+    top: calc(50vh - var(--sticky-half, 100px));
+  }
+  .gm-card-sticky-short {
+    top: calc(30vh - var(--sticky-half, 120px));
+  }
+}

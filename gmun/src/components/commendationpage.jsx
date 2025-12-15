@@ -138,8 +138,8 @@ const sample = [
 
   const containerClass = isMobile ? "w-full max-w-6xl mx-auto px-4" : className;
 
-  return (<div style={{ marginBottom: isMobile ? 0 : "-50svh" }}>
-    <div className={containerClass} style={{ minHeight: isMobile ? "auto" : "60.5svh", position: "relative", zIndex: 10 }}>
+  return (<div style={{ marginBottom: isMobile ? 0 : "-50vh" }}>
+    <div className={containerClass} style={{ minHeight: isMobile ? "auto" : "60.5vh", position: "relative", zIndex: 10 }}>
       <div
         ref={headingRef}
         className="mb-10 text-center"
@@ -154,21 +154,21 @@ const sample = [
       <div 
         ref={containerRef}
         className={isMobile ? "grid grid-cols-1 gap-6" : "grid grid-cols-1 lg:grid-cols-3 gap-8 items-end"}
-        style={isMobile ? { zIndex: 10 } : { minHeight:"100svh", zIndex: 10, top:"-53.5svh" ,position:"relative"}}
+        style={isMobile ? { zIndex: 10 } : { minHeight:"100vh", zIndex: 10, top:"-53.5vh" ,position:"relative"}}
       >
         {!isMobile ? (
           <>
-            <div style={{ height:"100svh",position:"relative"}}>
+            <div style={{ minHeight:"100vh",position:"relative"}}>
               <div className="gm-card-sticky">
                 <CommendationCard e={entries[0] || list[0]}/>
               </div>
             </div>
-            <div style={{ height:"84.5svh", position: "relative"}}>
+            <div style={{ minHeight:"84.5vh", position: "relative"}}>
               <div className="gm-card-sticky">
                 <CommendationCard e={entries[1] || list[1]} />
               </div>
             </div>
-            <div style={{ height:"67.5svh", position: "relative"}}>
+            <div style={{ minHeight:"67.5vh", position: "relative"}}>
               <div className="gm-card-sticky">
                 <CommendationCard e={entries[2] || list[2]} />
               </div>
