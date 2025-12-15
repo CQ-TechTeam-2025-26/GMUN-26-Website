@@ -185,13 +185,41 @@ export default function OurStory() {
   -webkit-backdrop-filter: blur(10px) saturate(120%);
   padding: 48px 40px;
   border-radius: 14px;
-  max-width: 1100px;
+  max-width: 100%;
   text-align: center;
   box-shadow: 0 18px 40px rgba(2,6,8,0.32);
   color: #ffff;
+   box-sizing: border-box;
 }
-.quote-text { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 500; color: var(--text); margin-bottom: 24px; line-height: 1.3; text-shadow: 0 6px 18px rgba(2,6,8,0.45); }
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 6vw, 48px);
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 24px;
+  text-shadow: 0 6px 18px rgba(2,6,8,0.45);
+
+  /* 🔑 prevents visual overflow */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 .quote-author { font-family: 'Poppins', sans-serif; font-size: 18px; color: #0d350bff; opacity: 0.95; }
+@media (max-width: 600px) {
+ .quote-section {
+    padding: 36px 16px;   /* ⬅️ reduces top & bottom gap */
+    align-items: flex-start;
+  }
+  .quote-card {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+     .quote-text {
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+}
+
 
 /* ---------------- CAROUSEL SLIDE COPY (frosted darker panel for contrast) ---------------- */
 .oe-slide-copy {
@@ -227,7 +255,7 @@ export default function OurStory() {
   .title { font-size: 64px; }
   .image-wrap { width: 260px; height: 220px; }
   .oe-slide-img { width: 260px; height: 260px; }
-  .container { padding: 32px; margin: 28px 12px 60px; border-radius: 12px; }
+  .container { padding: 32px; margin: 28px auto; border-radius: 12px; }
 }
 
  /* ------------ RESPONSIVE FIXES FOR OUR STORY SECTION -------------- */
@@ -254,7 +282,7 @@ export default function OurStory() {
 @media (max-width: 900px) {
   .container {
     padding: 32px 24px 60px;
-    margin: 20px 18px;
+    margin: 20px auto;
   }
 
   .since {
@@ -461,6 +489,21 @@ export default function OurStory() {
     grid-template-columns: 1fr;
   }
 }
+  /* 🔐 GLOBAL MOBILE SAFETY FIX */
+@media (max-width: 768px) {
+  .page-bg,
+  .container,
+  .oe-section,
+  .oe-wrap,
+  .quote-section,
+  .team-section,
+  .legacy-layout {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box;
+  }
+}
+
       }
 
 
@@ -821,6 +864,8 @@ function OurEvents() {
 
         .oe-header {  text-align: center;
   margin-bottom: 36px;
+  padding-inline: 16px;
+  box-sizing: border-box;
 
   /* 🔽 new lines */
   max-width: 900px;        /* same as carousel max-width */
@@ -829,11 +874,13 @@ function OurEvents() {
  }
         .oe-header h2 {
           font-family: 'Playfair Display', serif;
-          font-size: 65px;
+          font-size: clamp(32px, 8vw, 65px);
+          line-height: 1.1;
           margin: 0 0 8px;
           color: #05290cff;
         }
-        .oe-header p { color: #0a0a0aff; max-width: 100% ; margin: 0 auto; font-size: 20px }
+        .oe-header p { color: #0a0a0aff; max-width: 100% ; margin: 0 auto; font-size: 20px ; word-wrap: break-word;
+  overflow-wrap: break-word; }
 
         /* vertical stack: ITW first, Bootcamp below */
         .oe-grid {
@@ -1215,6 +1262,7 @@ function OurTeam() {
   height: 6px;
   border-radius: 999px;
   background: rgba(250, 222, 196, 0.9);
+  
 }
 
 
