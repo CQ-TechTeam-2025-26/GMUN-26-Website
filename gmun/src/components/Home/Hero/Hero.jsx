@@ -5,38 +5,45 @@ import { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const scrollIndicatorRef = useRef(null);
+  const heroRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Use multiple methods to detect scroll
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      setIsScrolled(scrollTop > 10);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting === false) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      },
+      { threshold: 0.98 }
+    );
 
-    // Check immediately
-    handleScroll();
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    return () => observer.disconnect();
+  });
 
   const handleOfflineRegister = () => {
-    window.open('https://unstop.com/p/global-model-united-nations-2026-gmun-iit-kharagpur-1606090', '_blank')
+    window.open(
+      "https://unstop.com/p/global-model-united-nations-2026-gmun-iit-kharagpur-1606090",
+      "_blank"
+    );
   };
 
   const handleOnlineRegister = () => {
-    window.open('https://unstop.com/p/global-model-united-nations-2026-online-committee-iit-kharagpur-1606101', '_blank');
+    window.open(
+      "https://unstop.com/p/global-model-united-nations-2026-online-committee-iit-kharagpur-1606101",
+      "_blank"
+    );
   };
 
   return (
     <motion.div
       className="hero-wrapper"
+      ref={heroRef}
       initial={{ y: -20 }}
       animate={{ y: 0 }}
       transition={{ duration: 1 }}
@@ -78,12 +85,18 @@ const Hero = () => {
       >
         <span className="hero-register-label">Register as Delegate</span>
         <div className="hero-buttons-container">
-          <button className="hero-register-btn hero-btn-offline" onClick={handleOfflineRegister}>
+          <button
+            className="hero-register-btn hero-btn-offline"
+            onClick={handleOfflineRegister}
+          >
             <MapPin className="btn-icon" />
             <span>Offline</span>
             <ChevronRight className="btn-arrow" />
           </button>
-          <button className="hero-register-btn hero-btn-online" onClick={handleOnlineRegister}>
+          <button
+            className="hero-register-btn hero-btn-online"
+            onClick={handleOnlineRegister}
+          >
             <Globe className="btn-icon" />
             <span>Online</span>
             <ChevronRight className="btn-arrow" />
@@ -91,13 +104,17 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      <div
-        ref={scrollIndicatorRef}
-        className={`hero-scroll-indicator ${isScrolled ? 'hidden' : ''}`}
+      <motion.div
+        className={`hero-scroll-indicator`}
+        initial={!isScrolled ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+        animate={!isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={
+          !isScrolled ? { duration: 1, delay: 0.8 } : { duration: 0.5 }
+        }
       >
         <span>Scroll to explore</span>
         <div className="scroll-line"></div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
