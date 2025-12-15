@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Announcements.css';
 import { Bell } from 'lucide-react';
 import { FaBullhorn, FaTimes } from 'react-icons/fa';
 
 const Announcements = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Show button only after scrolling past 80% of viewport height
+            setIsScrolled(window.scrollY > window.innerHeight * 0.8);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Check initial position
+        
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleAnnouncement = () => {
         setIsOpen(!isOpen);
@@ -12,9 +25,9 @@ const Announcements = () => {
 
     return (
         <div className="sticky-announcement-wrapper">
-            {/* TOGGLE BUTTON (Visible when closed) */}
+            {/* TOGGLE BUTTON (Visible when closed and scrolled) */}
             <div 
-                className={`announcement-toggle ${isOpen ? 'hidden' : ''}`} 
+                className={`announcement-toggle ${isOpen ? 'hidden' : ''} ${!isScrolled ? 'hidden' : ''}`} 
                 onClick={toggleAnnouncement}
             >
                 <div className="toggle-icon-box">

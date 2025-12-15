@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 :root {
   /* Accent colors */
   --gm-gold: #d4af37; /* Metallic Gold accent */
+  --gm-gold-bright: #ffe9a3;
   --gm-primary: #d4af37; /* Primary action color is Gold */
 
   /* Dark theme backgrounds */
@@ -59,12 +62,18 @@ section.mb-8::before,
 
 /* GM card baseline */
 .gm-card {
-  background: var(--gm-bg-secondary);
-  border-radius: var(--card-radius);
-  border: var(--card-border) solid rgba(212, 175, 55, 0.06); /* subtle gold border */
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  border-radius: 1.4rem;
+  border: 1px solid rgba(184, 155, 94, 0.35);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   transition: all 0.3s ease-out;
+}
+
+.gm-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 /* ensure cards stretch to same height and use flex column for bottom alignment */
@@ -81,17 +90,20 @@ section.mb-8::before,
 
 /* typography base colors and style */
 .gm-title {
-  color: var(--gm-maroon);
+  color: var(--gm-gold);
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
-  font-size: 4rem;
+  font-size: 3rem;
+  text-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
 }
 .gm-subtitle {
   color: var(--gm-teal);
-  font-size: 1.3rem !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.15em;
 }
 .gm-small {
-  color: var(--gm-teal);
-  font-size: 2rem;
+  color: rgba(243, 243, 243, 0.8);
+  font-size: 1.1rem;
 }
 
 /* chip */
@@ -296,18 +308,34 @@ section.mb-8::before,
 /* New animation for subtle pulse/glow on the countdown card - Updated to GOLD */
 @keyframes countdown-pulse {
   0% {
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
   }
   50% {
-    box-shadow: 0 16px 40px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 16px 45px rgba(212, 175, 55, 0.25);
   } /* Gold glow */
   100% {
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
   }
 }
 
 .countdown-card-effect {
-  animation: countdown-pulse 3s infinite alternate ease-in-out;
+  animation: countdown-pulse 4s infinite alternate ease-in-out;
+  background: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(14px);
+}
+
+/* Countdown dial styling */
+.gm-dial-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffe9a3;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.gm-dial-label {
+  color: rgba(243, 243, 243, 0.7);
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 /* responsive tweaks */
@@ -342,17 +370,17 @@ section.mb-8::before,
 /* Mobile adjustments for titles, spacing and card sizes */
 @media (max-width: 767px) {
   .gm-title {
-    font-size: 2.2rem;
-    line-height: 1.04;
+    font-size: 1.6rem;
+    line-height: 1.1;
     margin-top: 6px;
   }
   .gm-subtitle {
-    font-size: 0.98rem !important;
-    letter-spacing: 0.5px;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.1em;
     margin-bottom: 6px;
   }
   .gm-small {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   .gm-card {
     padding: 1rem 1rem 1.75rem 1rem; /* extra bottom padding to avoid overlap */

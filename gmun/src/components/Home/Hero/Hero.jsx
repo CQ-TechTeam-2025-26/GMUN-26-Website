@@ -1,12 +1,37 @@
 import "./Hero.css";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { ChevronRight, MapPin, Globe } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
-  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollIndicatorRef = useRef(null);
 
-  const handleClick = () => {
-    navigate("/api/auth/signup");
+  useEffect(() => {
+    const handleScroll = () => {
+      // Use multiple methods to detect scroll
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setIsScrolled(scrollTop > 10);
+    };
+
+    // Check immediately
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleOfflineRegister = () => {
+    window.open('https://unstop.com/p/global-model-united-nations-2026-gmun-iit-kharagpur-1606090', '_blank')
+  };
+
+  const handleOnlineRegister = () => {
+    window.open('https://unstop.com/p/global-model-united-nations-2026-online-committee-iit-kharagpur-1606101', '_blank');
   };
 
   return (
@@ -16,33 +41,63 @@ const Hero = () => {
       animate={{ y: 0 }}
       transition={{ duration: 1 }}
     >
+      <motion.p
+        className="hero-badge"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        Communiqué, IIT Kharagpur Presents
+      </motion.p>
+
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2.5 }}
         className="hero-title"
       >
-        GLOBAL MODEL UNITED NATIONS 2026
+        <span className="hero-title-line">GLOBAL MODEL</span>
+        <span className="hero-title-line">UNITED NATIONS</span>
+        <span className="hero-title-year">2026</span>
       </motion.h1>
 
-      <motion.div
-        className="hero-divider"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.25 }}
-      />
-
       <motion.p
+        className="hero-tagline"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-        className="hero-subtitle"
+        transition={{ duration: 1, delay: 0.5 }}
       >
-        Step into the shoes of world leaders and influence the future.
+        Where diplomacy meets innovation
       </motion.p>
 
-      {/* This section contains the fully functional register button with all routes - signup, login, verification, authentication configured, ask Ishan to link your email id from which the emails will be sent */}
-      {/* <button className="hero-button" onClick={handleClick}>REGISTER NOW!</button> */}
+      <motion.div
+        className="hero-buttons-section"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8 }}
+      >
+        <span className="hero-register-label">Register as Delegate</span>
+        <div className="hero-buttons-container">
+          <button className="hero-register-btn hero-btn-offline" onClick={handleOfflineRegister}>
+            <MapPin className="btn-icon" />
+            <span>Offline</span>
+            <ChevronRight className="btn-arrow" />
+          </button>
+          <button className="hero-register-btn hero-btn-online" onClick={handleOnlineRegister}>
+            <Globe className="btn-icon" />
+            <span>Online</span>
+            <ChevronRight className="btn-arrow" />
+          </button>
+        </div>
+      </motion.div>
+
+      <div
+        ref={scrollIndicatorRef}
+        className={`hero-scroll-indicator ${isScrolled ? 'hidden' : ''}`}
+      >
+        <span>Scroll to explore</span>
+        <div className="scroll-line"></div>
+      </div>
     </motion.div>
   );
 };

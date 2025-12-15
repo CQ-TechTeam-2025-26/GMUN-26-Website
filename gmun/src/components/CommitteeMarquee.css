@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Section wrapper */
+.committee-marquee-section {
+  width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(15, 30, 40, 0.5) 20%,
+    rgba(15, 30, 40, 0.5) 80%,
+    transparent 100%
+  );
+}
+
+/* Fade edges */
+.committee-marquee-section::before,
+.committee-marquee-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.committee-marquee-section::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(7, 16, 34, 1), transparent);
+}
+
+.committee-marquee-section::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(7, 16, 34, 1), transparent);
+}
+
+/* Track containing the scrolling content */
+.committee-marquee-track {
+  display: flex;
+  width: fit-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.committee-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Content wrapper */
+.committee-marquee-content {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Individual committee item */
+.committee-item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Committee name styling */
+.committee-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  
+  /* Gold gradient matching Hero */
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    #f5ebe0 0%,
+    #e8c9a0 25%,
+    #d4b08c 50%,
+    #B38C6A 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  filter: drop-shadow(0 0 20px rgba(179, 140, 106, 0.25));
+  transition: filter 0.3s ease;
+}
+
+.committee-item:hover .committee-name {
+  filter: drop-shadow(0 0 30px rgba(179, 140, 106, 0.5));
+}
+
+/* Separator dot */
+.committee-separator {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: rgba(179, 140, 106, 0.4);
+  margin: 0 1.5rem;
+}
+
+/* Animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .committee-marquee-section {
+    padding: 1.5rem 0;
+  }
+  
+  .committee-separator {
+    margin: 0 1rem;
+  }
+  
+  .committee-marquee-section::before,
+  .committee-marquee-section::after {
+    width: 50px;
+  }
+}
+

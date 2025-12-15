@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* Section background */
 
 .reviews-section {
-  padding: 6rem 0;
+  padding: 5rem 0 6rem;
   position: relative;
   overflow: hidden;
+}
+
+/* Decorative top border */
+.reviews-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
 /* Wrapper */
@@ -16,12 +31,29 @@
 /* Heading */
 .reviews-heading {
   text-align: center;
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 4rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  padding-top: 1rem;
 
-  color: #f0b45b;
+  color: #ffe9a3;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+}
+
+/* Subheading */
+.reviews-subheading {
+  text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(230, 223, 215, 0.7);
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Outer scrolling area */
@@ -46,19 +78,14 @@
 
 /* Review Card */
 .review-card {
-  background: linear-gradient(
-    160deg,
-    rgba(18, 70, 82, 0.55),
-    rgba(6, 28, 34, 0.55)
-  );
-
-  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 1.4rem;
   padding: 2rem;
   min-width: 460px;
   max-width: 460px;
 
-  border: 1px solid rgba(240, 180, 91, 0.15);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(184, 155, 94, 0.35);
+  backdrop-filter: blur(12px);
 
   transition: all 0.35s ease, box-shadow 0.35s ease;
 }
@@ -66,41 +93,49 @@
 /* Hover glow */
 .review-card:hover {
   transform: translateY(-5px);
-  border-color: #e4b363;
+  border-color: #d4af37;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+/* Star Rating */
+.star-rating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.star-filled {
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.5));
+}
+
+.star-empty {
+  opacity: 0.5;
 }
 
 /* Author info */
 .review-writer {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Avatar */
-.avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #f0b45b;
+  margin-bottom: 1rem;
 }
 
 /* Name */
 .name {
-  color: #f3e6cf;
+  color: #ffe9a3;
+  font-weight: 600;
+  font-size: 1.05rem;
 }
 
 .review-text {
-  color: #d6dfe2;
+  color: rgba(243, 243, 243, 0.9);
   line-height: 1.65;
   max-height: 50%;
 }
 
 .review-text p {
   font-size: 0.98rem;
-  line-height: 1.65;
-  color: #d6dfe2;
+  line-height: 1.7;
+  color: rgba(243, 243, 243, 0.9);
   overflow: hidden;
 }
 
