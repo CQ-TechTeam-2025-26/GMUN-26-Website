@@ -175,7 +175,7 @@
 
 .review-text::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.35);
-  border-radius: 999px;
+  border-radius: 50%;
 }
 
 .review-text::-webkit-scrollbar-thumb {
@@ -184,7 +184,7 @@
     rgba(248, 231, 176, 0.9),
     rgba(243, 212, 138, 0.9)
   );
-  border-radius: 999px;
+  border-radius: 50%;
   border: 2px solid rgba(0, 0, 0, 0.4);
 }
 
