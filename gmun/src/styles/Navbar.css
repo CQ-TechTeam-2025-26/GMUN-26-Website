@@ -194,10 +194,10 @@
   position: relative;
   background: var(--accent-gold);
   color: #000 !important;
-  padding: 8px 24px;
+  padding: 6px 18px;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;

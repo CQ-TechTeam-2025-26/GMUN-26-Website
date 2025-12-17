@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../store/authSlice";
-import axios from "axios";
-import { BASE_URL } from "../constants";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import gmunlogo from "../images/GMUN Gold.png";
 import edition from "../images/4thBackLogo.webp";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
-  const authStatus = useSelector((state) => state.auth.status);
+  const authStatus = false; // frontend-only: no auth state
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
   
   // Helper to check if a path is active
   const isActive = (path) => {
@@ -45,18 +38,6 @@ const Navbar = () => {
     if (window.innerWidth <= 1024) {
       e.preventDefault();
       setIsDropdownOpen(!isDropdownOpen);
-    }
-  };
-
-  const handlelogout = async () => {
-    try {
-      await axios.post(`${BASE_URL}/users/logout`, {}, { withCredentials: true });
-      toast.success("Logged out successfully");
-      dispatch(logout());
-      navigate("/");
-      closeMobileMenu();
-    } catch (error) {
-      toast.error("Logout failed");
     }
   };
 
@@ -114,13 +95,17 @@ const Navbar = () => {
           <li><Link to="/gallery" className={`roll-text ${isActive('/gallery') ? 'active' : ''}`} onClick={handleLinkClick}>Gallery</Link></li>
           <li><Link to="/Sponsors" className={`roll-text ${isActive('/Sponsors') ? 'active' : ''}`} onClick={handleLinkClick}>Sponsors</Link></li>
 
-          {/* Auth Button */}
+          {/* Auth Button - direct registration link from Hero (offline) */}
           <li className="auth-item">
-            {authStatus ? (
-              <button onClick={handlelogout} className="magnetic-btn">Logout</button>
-            ) : (
-              <Link to="/login" className="magnetic-btn" onClick={handleLinkClick}>Login</Link>
-            )}
+            <a
+              href="https://unstop.com/p/global-model-united-nations-2026-gmun-iit-kharagpur-1606090"
+              className="magnetic-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMobileMenu}
+            >
+              Register
+            </a>
           </li>
         </ul>
 

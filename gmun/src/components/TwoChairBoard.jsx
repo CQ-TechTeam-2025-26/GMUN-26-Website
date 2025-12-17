@@ -4,6 +4,7 @@ import useInView from "../hooks/useInView";
 
 const TwoChairBoard = ({ title, subtitle, chairs, message }) => {
   const [selectedChair, setSelectedChair] = useState(null);
+  const [headingRef, headingInView] = useInView({ threshold: 0.5 });
 
   const openModal = (chair) => {
     setSelectedChair(chair);
@@ -19,7 +20,12 @@ const TwoChairBoard = ({ title, subtitle, chairs, message }) => {
     <>
       <div className="cards two-chair-board fade-in">
         <h3>{subtitle}</h3>
-        <h1 className="clean-heading">{title}</h1>
+        <h1
+          ref={headingRef}
+          className={`clean-heading ${headingInView ? "in-view" : ""}`}
+        >
+          {title}
+        </h1>
 
         <div className="two-chair-photos">
           {chairs.map((chair, index) => (
