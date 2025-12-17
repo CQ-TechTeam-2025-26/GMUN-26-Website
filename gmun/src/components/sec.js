@@ -247,33 +247,51 @@ const Sec = () => {
     scrollLeftHandler,
     scrollRightHandler,
     scrollState
-  ) => (
-    <div className={`${styles.cardWrapper} ${styles[`shadow-${scrollState}`]}`}>
-      {scrollState !== 'none' && (
-        <div className={styles.horizontalNav}>
-          <button
-            onClick={scrollLeftHandler}
-            className={`${styles.arrowBtn} ${styles.left}`}
-            disabled={scrollState === 'start'}
-          >
-            <MdArrowBackIos />
-          </button>
-          <button
-            onClick={scrollRightHandler}
-            className={`${styles.arrowBtn} ${styles.right}`}
-            disabled={scrollState === 'end'}
-          >
-            <MdArrowForwardIos />
-          </button>
-        </div>
-      )}
-      <div ref={scrollRef} className={styles.cardRow}>
-        {data.map((member, index) => (
-          <TeamCard3D key={index} member={member} />
-        ))}
+  ) => {
+    const isMobile = window.innerWidth <= 768;
+    const nav = scrollState !== 'none' && (
+      <div className={styles.horizontalNav}>
+        <button
+          onClick={scrollLeftHandler}
+          className={`${styles.arrowBtn} ${styles.left}`}
+          disabled={scrollState === 'start'}
+        >
+          <MdArrowBackIos />
+        </button>
+        <button
+          onClick={scrollRightHandler}
+          className={`${styles.arrowBtn} ${styles.right}`}
+          disabled={scrollState === 'end'}
+        >
+          <MdArrowForwardIos />
+        </button>
       </div>
-    </div>
-  );
+    );
+    if (isMobile) {
+      return (
+        <>
+          <div className={`${styles.cardWrapper} ${styles[`shadow-${scrollState}`]}`}>
+            <div ref={scrollRef} className={styles.cardRow}>
+              {data.map((member, index) => (
+                <TeamCard3D key={index} member={member} />
+              ))}
+            </div>
+          </div>
+          {nav && <div className={styles.mobileNavBelow}>{nav}</div>}
+        </>
+      );
+    }
+    return (
+      <div className={`${styles.cardWrapper} ${styles[`shadow-${scrollState}`]}`}>
+        <div ref={scrollRef} className={styles.cardRow}>
+          {data.map((member, index) => (
+            <TeamCard3D key={index} member={member} />
+          ))}
+        </div>
+        {nav}
+      </div>
+    );
+  };
 
   return (
     <div className={styles.gallery}>
