@@ -8,11 +8,9 @@
         margin-bottom: 0;
     }
     .horizontalNav {
-        position: static !important;
-        left: unset;
-        right: unset;
-        top: unset;
-        bottom: unset;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
         transform: none;
         width: auto;
         display: flex !important;
@@ -492,6 +490,7 @@
 @media (max-width: 768px) {
     .headerTitle { font-size: 2.8rem; }
     .cardWrapper {
+        position: relative;
         background: transparent;
         background-image: none;
         box-shadow: none;
@@ -544,7 +543,9 @@
         transform: none !important;
     }
     .horizontalNav {
-        position: static !important;
+        position: absolute;
+        top: 102.5%;
+        left: 50%;
         width: 100%;
         display: flex !important;
         justify-content: center;
@@ -557,6 +558,7 @@
         width: 28px;
         height: 28px;
         align-items: center;
+        justify-content: center;
         font-size: 0.75rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
