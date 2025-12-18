@@ -42,7 +42,7 @@ const Footer = () => {
               </Link>
               
               <p className="footer-desc">
-                The Official Soft Skills & Personality Development Society of IIT Kharagpur.
+                The Official Soft Skills and Personality Development Society of IIT Kharagpur.
               </p>
             </div>
           </div>
