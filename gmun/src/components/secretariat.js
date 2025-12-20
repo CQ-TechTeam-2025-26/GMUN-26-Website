@@ -2,7 +2,7 @@
 const secretrait = [
   {
     name: "ANSHUMAN SINGH",
-    role: "Secretariat",
+    role: "UNCSW",
     image: "/team-images/Anshuman.webp",
     facebook: "https://www.facebook.com/share/1DM9Sch9Um/",
     linkedin: "https://www.linkedin.com/in/anshuman-singh-638504324/",
@@ -10,7 +10,7 @@ const secretrait = [
   },
   {
     name: "ANUSHA BAHETI",
-    role: "Secretariat",
+    role: "UNGA-DISEC",
     image: "/team-images/Anusha.webp",
     facebook: "https://www.facebook.com/share/1AZqxq4PJt/",
     linkedin: "https://www.linkedin.com/in/anusha-baheti-086540321/",
@@ -18,7 +18,7 @@ const secretrait = [
   },
   {
     name: "DIVYANSH JOSHI",
-    role: "Secretariat",
+    role: "AIPPM",
     image: "/team-images/Divyansh Joshi.webp",
     facebook: "https://www.facebook.com/share/1CeAGCxWVk/",
     linkedin: "https://www.linkedin.com/in/divyansh-joshi-b98b19321/",
@@ -27,7 +27,7 @@ const secretrait = [
 
   {
     name: "MAADHAV GOEL",
-    role: "Secretariat",
+    role: "UNSC",
     image: "/team-images/Maadhav.webp",
     facebook: "https://www.facebook.com/share/1BYGnaJn1n/",
     linkedin: "https://www.linkedin.com/in/maadhav-goel-76b207260/",
@@ -36,7 +36,7 @@ const secretrait = [
   },
   {
     name: "PRIYANSU DASH",
-    role: "Secretariat",
+    role: "UNHRC",
     image: "/team-images/Priyansu.webp",
     facebook: "https://www.facebook.com/share/1WmjSigfZi/",
     linkedin: "https://www.linkedin.com/in/priyansu-dash-494281321/",
@@ -44,7 +44,7 @@ const secretrait = [
   },
   {
     name: "SHASHWAT WARUNE",
-    role: "Secretariat",
+    role: "IP",
     image: "/team-images/Shashwat.webp",
     facebook: "https://www.facebook.com/share/1FeKW6fh3R/",
     linkedin: "https://www.linkedin.com/in/shashwat-warune-4a936b324/",
@@ -52,7 +52,7 @@ const secretrait = [
   },
   {
     name: "TANUSH BADONIA",
-    role: "Secretariat",
+    role: "WORLD BANK",
     image: "/team-images/Tanush.webp",
     facebook: "https://www.facebook.com/share/1DDbxm5Eoj/",
     linkedin: "https://www.linkedin.com/in/tanush-badonia-84a7a4313/",
