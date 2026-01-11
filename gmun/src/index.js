@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <FAQ />,
       },
       {
-        path: "/Sponsors",
+        path: "/Partners",
         element: <Sponsors />,
       },
 

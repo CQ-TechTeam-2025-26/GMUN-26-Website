@@ -93,7 +93,7 @@ const Navbar = () => {
           <li><Link to="/gallery" className={`roll-text ${isActive('/gallery') ? 'active' : ''}`} onClick={handleLinkClick}>Gallery</Link></li>
           <li><Link to="/sec" className={`roll-text ${isActive('/sec') ? 'active' : ''}`} onClick={handleLinkClick}>Secretariat</Link></li>
           <li><Link to="/AboutUs" className={`roll-text ${isActive('/AboutUs') ? 'active' : ''}`} onClick={handleLinkClick}>About</Link></li>
-          <li><Link to="/Sponsors" className={`roll-text ${isActive('/Sponsors') ? 'active' : ''}`} onClick={handleLinkClick}>Sponsors</Link></li>
+          <li><Link to="/Partners" className={`roll-text ${isActive('/Partners') ? 'active' : ''}`} onClick={handleLinkClick}>Partners</Link></li>
 
           {/* Auth Button - direct registration link from Hero (offline) */}
           <li className="auth-item">

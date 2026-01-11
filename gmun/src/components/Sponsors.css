@@ -62,6 +62,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  align-items: center;
 }
 
 .sponsors-section-title {
@@ -80,9 +81,13 @@
    ============================== */
 .sponsor-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 280px));
   gap: 1.5rem;
   justify-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 /* Individual sponsor card - HowToMUN style */
@@ -94,6 +99,7 @@
   padding: 1.5rem;
   text-align: center;
   width: 100%;
+  max-width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -233,4 +239,54 @@
   .sponsors-section-title {
     font-size: 1.1rem;
   }
+}
+
+/* StuCred hero (top centered spotlight) */
+.stucred-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.25rem;
+}
+
+.stucred-hero img {
+  max-width: 360px;
+  max-height: 160px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.95);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+.stucred-name {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffe9a3;
+}
+
+.stucred-desc {
+  margin: 0;
+  color: rgba(243,243,243,0.8);
+}
+
+/* Subheadings for partner groups */
+.partner-subheading {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f8e7b0;
+  margin: 0.75rem 0 0.5rem;
+}
+
+/* Preserve original layout for previous sponsors (full-width grid, not centered) */
+.previous-sponsor-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
 }
