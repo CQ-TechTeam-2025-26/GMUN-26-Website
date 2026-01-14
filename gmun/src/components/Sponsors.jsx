@@ -155,20 +155,20 @@ const Sponsors = () => {
 
       {/* StuCred hero (kept top & centered) */}
       {stuCred && (
-        <div className="sponsors-section">
-          <a
-            href={stuCred.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stucred-hero"
-          >
-            <img src={stuCred.logo} alt={stuCred.name} />
-            <h2 className="stucred-name">{stuCred.name}</h2>
-            <p className="stucred-desc">{stuCred.description}</p>
-          </a>
+  <div className="sponsors-section">
+    <a
+      href={stuCred.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="stucred-hero"
+    >
+      <img src={stuCred.logo} alt={stuCred.name} />
+      <h2 className="stucred-name">{stuCred.name}</h2>
+      <p className="stucred-desc">{stuCred.description}</p>
+    </a>
+  </div>
+)}
 
-        </div>
-      )}
 
       {/* Current Partners with subheadings */}
       <div className="sponsors-section">
