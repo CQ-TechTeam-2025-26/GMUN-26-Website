@@ -2,7 +2,13 @@ import React from 'react';
 import './Sponsors.css';
 
 const currentSponsors = [
-  { id: 1, name: 'StuCred', logo: '/gallery/sponsors/stucred.png', description: 'Title Partner' },
+  { 
+  id: 1, 
+  name: 'StuCred', 
+  logo: '/gallery/sponsors/stucred.png', 
+  description: 'Title Partner',
+  url: 'https://stucred.com/'
+},
   { id: 2, name: 'The WallStreet School India', logo: '/gallery/sponsors/LOGO-TWSS.webp', description: 'Education Partner' },
   { id: 3, name: 'IMS', logo: '/gallery/sponsors/IMS.png', description: 'Education Partner' },
   { id: 4, name: 'Learn 4 Exam', logo: '/gallery/sponsors/Learn4exam%20logo.jpeg', description: 'Education Partner' },
@@ -150,11 +156,17 @@ const Sponsors = () => {
       {/* StuCred hero (kept top & centered) */}
       {stuCred && (
         <div className="sponsors-section">
-          <div className="stucred-hero">
+          <a
+            href={stuCred.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stucred-hero"
+          >
             <img src={stuCred.logo} alt={stuCred.name} />
             <h2 className="stucred-name">{stuCred.name}</h2>
             <p className="stucred-desc">{stuCred.description}</p>
-          </div>
+          </a>
+
         </div>
       )}
 
